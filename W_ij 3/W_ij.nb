@@ -1,0 +1,4728 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    166868,       4720]
+NotebookOptionsPosition[    162310,       4643]
+NotebookOutlinePosition[    162712,       4660]
+CellTagsIndexPosition[    162669,       4657]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"SetOptions", "[", 
+  RowBox[{"$FrontEndSession", ",", 
+   RowBox[{"NotebookAutoSave", "\[Rule]", "True"}]}], "]"}], "\n", 
+ RowBox[{"NotebookSave", "[", "]"}]}], "Input",
+ CellChangeTimes->{{3.735428551079726*^9, 
+  3.7354285685633507`*^9}},ExpressionUUID->"7b390084-6820-40d0-b886-\
+ac20dfc8d0e1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"wijtab", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\ACER\\\\Documents\\\\Estancia \
+2\\\\ncomms15393-s5\\\\W_ijcsv.csv\>\"", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7355083824104595`*^9, 3.7355084469987783`*^9}, {
+   3.735508489656741*^9, 3.7355084931068583`*^9}, 3.7355086628098364`*^9, 
+   3.7355091354590397`*^9, {3.735941904211244*^9, 
+   3.7359419435670824`*^9}},ExpressionUUID->"ab2b36ff-a098-40aa-9296-\
+f88a0f6ba1bf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"wijtable", "=", 
+   RowBox[{"Drop", "[", 
+    RowBox[{"wijtab", ",", "1"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.735520186751402*^9, 3.735520195151477*^9}, 
+   3.73594524231288*^9, {3.736352313428193*^9, 3.7363523342532682`*^9}, {
+   3.7363788864839277`*^9, 
+   3.7363789100035305`*^9}},ExpressionUUID->"1b85e07c-3b06-49f8-9435-\
+77eb26790938"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"especies", "=", " ", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\ACER\\\\Documents\\\\Estancia 2\\\\W_ij \
+3\\\\Especies.csv\>\"", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"especiestabla", "=", " ", 
+   RowBox[{"Drop", "[", 
+    RowBox[{"especies", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"especieswij", "=", 
+   RowBox[{
+   "Import", "[", 
+    "\"\<C:\\\\Users\\\\ACER\\\\Documents\\\\Estancia \
+2\\\\ncomms15393-s5\\\\espwij.csv\>\"", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"espwijtabla", "=", 
+   RowBox[{"Drop", "[", 
+    RowBox[{"especieswij", ",", "1"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.735943221264697*^9, 3.7359432217825117`*^9}, {
+  3.7359440737929945`*^9, 3.7359441313441896`*^9}, {3.735944382783016*^9, 
+  3.735944385414569*^9}, {3.735944429935442*^9, 3.73594448485107*^9}, {
+  3.7363788761410494`*^9, 
+  3.7363788810142555`*^9}},ExpressionUUID->"fb55545a-82db-4fec-9803-\
+478d9b8ce415"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"xGen", "[", "N_", "]"}], ":=", "\[IndentingNewLine]", "\t", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"X", ",", "i"}], "}"}], ",", "\[IndentingNewLine]", "\t\t", 
+    RowBox[{
+     RowBox[{"X", " ", "=", " ", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", "\t\t", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", " ", "N"}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", "\t\t\t", 
+       RowBox[{"X", " ", "=", " ", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"X", ",", 
+          RowBox[{"ToExpression", "[", 
+           RowBox[{"\"\<x\>\"", "<>", 
+            RowBox[{"ToString", "[", "i", "]"}]}], "]"}]}], "]"}]}]}], 
+      "\[IndentingNewLine]", "\t\t", "]"}], ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{"Return", "[", "X", "]"}]}]}], "\[IndentingNewLine]", "\t", 
+   "]"}]}]], "Code",ExpressionUUID->"791552a9-09e0-43e5-91dd-09a688350056"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xx", "=", 
+   RowBox[{"xGen", "[", 
+    RowBox[{"Length", "[", "especiestabla", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"xx", "\[LeftDoubleBracket]", ";;", "\[RightDoubleBracket]"}], "=", 
+   RowBox[{"especiestabla", "\[LeftDoubleBracket]", 
+    RowBox[{";;", ",", "1"}], "\[RightDoubleBracket]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xw", "=", 
+   RowBox[{"xGen", "[", 
+    RowBox[{"Length", "[", "espwijtabla", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"xw", "\[LeftDoubleBracket]", ";;", "\[RightDoubleBracket]"}], "=", 
+   RowBox[{"espwijtabla", "\[LeftDoubleBracket]", 
+    RowBox[{";;", ",", "1"}], "\[RightDoubleBracket]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7359423319561467`*^9, 3.7359423705887346`*^9}, {
+  3.735943262858536*^9, 3.7359432706529365`*^9}, {3.735944143898918*^9, 
+  3.735944210026946*^9}, {3.735944285272679*^9, 
+  3.73594429237974*^9}},ExpressionUUID->"09c166c2-ba74-469d-afd0-\
+b6040f8ed5b5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"xx", ",", "\"\<Deinococcus radiodurans\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.735943087890625*^9, 3.735943116196599*^9}, 
+   3.7359431501204133`*^9, {3.7363795113257294`*^9, 
+   3.736379549610557*^9}},ExpressionUUID->"46fce633-cc6b-474d-97fd-\
+1ab31d809a69"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "184", "}"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7359433080693097`*^9, 3.7359438722000237`*^9, 3.73594431271492*^9, 
+   3.7359444035072575`*^9, 3.7359444891234503`*^9, 3.7359448795078154`*^9, 
+   3.735945125613411*^9, {3.7359452288130293`*^9, 3.7359452507184014`*^9}, 
+   3.7359454310026617`*^9, 3.736352216205801*^9, 3.736352338562806*^9, 
+   3.7363789005219216`*^9, 3.736379353429937*^9, 3.736379550257189*^9, 
+   3.7380043838991437`*^9, 3.742591833182621*^9, 3.7425948453272705`*^9, 
+   3.7427601064110165`*^9, 3.742765514282683*^9, 3.7427666719946833`*^9, 
+   3.742767301399935*^9, 3.7427686016971674`*^9, 
+   3.7427718000008535`*^9},ExpressionUUID->"d55b0bcc-26a2-42f0-bbe6-\
+276b785135b8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"xx", ",", "\"\<Streptococcus salivarius\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.735944219764247*^9, 3.735944264894156*^9}, 
+   3.73594452172073*^9, {3.735944663455735*^9, 3.735944671624775*^9}, {
+   3.7363794370942707`*^9, 
+   3.736379444210165*^9}},ExpressionUUID->"4599c306-dc87-4654-bcb9-\
+a6ad315eb974"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "522", "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.735944266135481*^9, 3.735944269851307*^9}, 
+   3.7359443128106804`*^9, 3.7359444036071706`*^9, 3.735944489219083*^9, 
+   3.7359445227767663`*^9, {3.735944665299746*^9, 3.735944672407652*^9}, 
+   3.7359448796038785`*^9, 3.7359451257095766`*^9, {3.735945228909115*^9, 
+   3.735945250789959*^9}, 3.735945431086716*^9, 3.7363522163427243`*^9, 
+   3.7363523386217575`*^9, 3.7363789006108685`*^9, 3.7363793534879007`*^9, 
+   3.736379444899786*^9, 3.7380043839471464`*^9, 3.742591833225489*^9, 
+   3.742594845633095*^9, 3.7427601067578154`*^9, 3.742765514599395*^9, 
+   3.7427666723564777`*^9, 3.7427673015828323`*^9, 3.742768601759132*^9, 
+   3.7427718002597055`*^9},ExpressionUUID->"2fd584fe-bbea-403e-8318-\
+eb779cd92af0"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"wij", "[", 
+   RowBox[{"c_", ",", "v_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"Length", "[", "wijtable", "]"}]}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"wijtable", "\[LeftDoubleBracket]", 
+         RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "\[Equal]", 
+        RowBox[{
+        "xx", "\[LeftDoubleBracket]", "c", "\[RightDoubleBracket]"}]}], "&&", 
+       RowBox[{
+        RowBox[{"wijtable", "\[LeftDoubleBracket]", 
+         RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}], "\[Equal]", " ", 
+        RowBox[{
+        "xx", "\[LeftDoubleBracket]", "v", "\[RightDoubleBracket]"}]}]}], ",", 
+      RowBox[{"Print", "[", 
+       RowBox[{"wijtable", "\[LeftDoubleBracket]", 
+        RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7355085652520742`*^9, 3.7355087157682147`*^9}, {
+  3.7355088330504713`*^9, 3.7355088477734275`*^9}, {3.7355089583321457`*^9, 
+  3.7355089718546743`*^9}, {3.7355090079497957`*^9, 3.7355090862607927`*^9}, {
+  3.7355092058360977`*^9, 3.7355092081207747`*^9}, {3.73594452906596*^9, 
+  3.7359445670768585`*^9}, {3.7359446485981073`*^9, 3.735944681063823*^9}, {
+  3.7359448561193137`*^9, 3.7359448633047647`*^9}, {3.7363522748212957`*^9, 
+  3.7363522837292013`*^9}, {3.736379326649273*^9, 3.7363793434996233`*^9}, {
+  3.7363794580642295`*^9, 3.736379459699295*^9}, {3.7363795063585715`*^9, 
+  3.7363795067403717`*^9}},ExpressionUUID->"002891a9-36af-4423-9918-\
+113867a124ed"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"wij", "[", 
+  RowBox[{"184", ",", "522"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7355087187168036`*^9, 3.735508726303296*^9}, {
+  3.735509212733225*^9, 3.7355092150897083`*^9}, {3.735945112784503*^9, 
+  3.7359451199315405`*^9}, {3.7363792990221004`*^9, 3.7363793167429647`*^9}, {
+  3.736379369983927*^9, 3.7363793714820986`*^9}, {3.7363794489224653`*^9, 
+  3.736379451756847*^9}, {3.7363795553293033`*^9, 
+  3.736379558140681*^9}},ExpressionUUID->"f1d1136a-1584-4c4f-82e2-\
+bcf67543e34a"],
+
+Cell[BoxData[
+ RowBox[{"-", "0.016`"}]], "Print",
+ CellChangeTimes->{3.736379639754128*^9, 3.738004384047105*^9, 
+  3.7425918333842897`*^9, 3.7425948458319817`*^9, 3.7427601072485523`*^9, 
+  3.74276551498415*^9, 3.742766672779236*^9, 3.742767301780717*^9, 
+  3.742768601843087*^9, 
+  3.74277180056653*^9},ExpressionUUID->"9d9215f3-f21f-406f-ae2a-4509b8dcd816"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Influyentesde", "[", "c_", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"Length", "[", "wijtable", "]"}]}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"wijtable", "\[LeftDoubleBracket]", 
+        RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}], "\[Equal]", 
+       RowBox[{"xx", "\[LeftDoubleBracket]", "c", "\[RightDoubleBracket]"}]}],
+       ",", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+        RowBox[{"wijtable", "\[LeftDoubleBracket]", 
+         RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}], "\[Rule]", 
+        RowBox[{"wijtable", "\[LeftDoubleBracket]", 
+         RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7355208116211843`*^9, 3.7355208600112143`*^9}, {
+  3.735520927085086*^9, 3.73552102208504*^9}, {3.735521088185237*^9, 
+  3.735521187630496*^9}, {3.7355212299282374`*^9, 3.7355212349895396`*^9}, {
+  3.7355213116598406`*^9, 3.7355213644115744`*^9}, {3.7355213978477583`*^9, 
+  3.735521568763601*^9}, {3.735521612323307*^9, 3.7355216944122567`*^9}, {
+  3.735523019029562*^9, 3.7355230241395693`*^9}, {3.7359431684223785`*^9, 
+  3.735943184901188*^9}, {3.735945131799284*^9, 3.735945202065715*^9}, {
+  3.7359453104775057`*^9, 
+  3.7359453171033616`*^9}},ExpressionUUID->"b73b33ac-af15-46a5-ac34-\
+c362aecc6cef"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Influyentesde", "[", "276", "]"}]], "Input",
+ CellChangeTimes->{{3.735521132019828*^9, 3.7355211497857747`*^9}, {
+  3.7359452075685954`*^9, 3.735945217315233*^9}, {3.7359452748998585`*^9, 
+  3.735945307905528*^9}},ExpressionUUID->"721187be-7c95-4405-804b-\
+3b0aa20f659f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\<\"Catenibacterium mitsuokai\"\>", "\[Rule]", 
+  RowBox[{"-", "0.0029`"}]}]], "Print",
+ CellChangeTimes->{3.736352338824641*^9, 3.736379353609831*^9, 
+  3.7380043841150875`*^9, 3.742591833501505*^9, 3.7425948460418615`*^9, 
+  3.742760107573348*^9, 3.7427655153230815`*^9, 3.742766673169016*^9, 
+  3.7427673020335712`*^9, 3.7427686019270363`*^9, 
+  3.7427718008083925`*^9},ExpressionUUID->"bd0c35bd-5800-44a5-8cf0-\
+258e0428a370"],
+
+Cell[BoxData[
+ RowBox[{"\<\"Mycoplasma capricolum\"\>", "\[Rule]", 
+  RowBox[{"-", "0.0234`"}]}]], "Print",
+ CellChangeTimes->{3.736352338824641*^9, 3.736379353609831*^9, 
+  3.7380043841150875`*^9, 3.742591833501505*^9, 3.7425948460418615`*^9, 
+  3.742760107573348*^9, 3.7427655153230815`*^9, 3.742766673169016*^9, 
+  3.7427673020335712`*^9, 3.7427686019270363`*^9, 
+  3.742771800974296*^9},ExpressionUUID->"71d20495-aeb0-43c7-b612-\
+7e6155068f34"],
+
+Cell[BoxData[
+ RowBox[{"\<\"Streptococcus parasanguinis\"\>", "\[Rule]", 
+  RowBox[{"-", "0.00661`"}]}]], "Print",
+ CellChangeTimes->{3.736352338824641*^9, 3.736379353609831*^9, 
+  3.7380043841150875`*^9, 3.742591833501505*^9, 3.7425948460418615`*^9, 
+  3.742760107573348*^9, 3.7427655153230815`*^9, 3.742766673169016*^9, 
+  3.7427673020335712`*^9, 3.7427686019270363`*^9, 
+  3.7427718011491985`*^9},ExpressionUUID->"fbbe9a77-20bd-4753-ad19-\
+269dcf5ca906"],
+
+Cell[BoxData[
+ RowBox[{"\<\"Streptococcus salivarius\"\>", "\[Rule]", 
+  RowBox[{"-", "0.0572`"}]}]], "Print",
+ CellChangeTimes->{3.736352338824641*^9, 3.736379353609831*^9, 
+  3.7380043841150875`*^9, 3.742591833501505*^9, 3.7425948460418615`*^9, 
+  3.742760107573348*^9, 3.7427655153230815`*^9, 3.742766673169016*^9, 
+  3.7427673020335712`*^9, 3.7427686019270363`*^9, 
+  3.7427718013191*^9},ExpressionUUID->"6e1920f8-0306-4cca-95d0-51effaf4f2dd"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{"\"\<\!\(\*SubscriptBox[\(W\), \
+\(ij\)]\)=\!\(\*OverscriptBox[UnderscriptBox[\(\[Sum]\), \(k\)], \
+SubsuperscriptBox[\(g\), \(jk\), \
+\(c\)]]\){\[Alpha]\!\(\*FractionBox[\(\*SubscriptBox[\(n\), \(i\)] \
+\*SubsuperscriptBox[\(g\), \(ik\), \(P\)]\), \(\*UnderscriptBox[\(\[Sum]\), \
+\(m\)]\*SubscriptBox[\(n\), \(m\)] \*SubsuperscriptBox[\(g\), \(mk\), \
+\(P\)]\)]\)-\!\(\*FractionBox[\(\*SubscriptBox[\(n\), \(i\)] \
+\*SubsuperscriptBox[\(g\), \(ik\), \(c\)]\), \(\*UnderscriptBox[\(\[Sum]\), \
+\(m\)]\*SubscriptBox[\(n\), \(m\)] \*SubsuperscriptBox[\(g\), \(mk\), \
+\(c\)]\)]\)}\>\"", "\[IndentingNewLine]", "\"\<[\!\(\*SubscriptBox[\(c\), \(k\
+\)]\)(\!\(\*SubscriptBox[\(t\), \(2\)]\))-\!\(\*SubscriptBox[\(c\), \(k\)]\)(\
+\!\(\*SubscriptBox[\(t\), \(1\)]\))]\[Proportional] \
+(\!\(\*SubscriptBox[\(t\), \(2\)]\)-\!\(\*SubscriptBox[\(t\), \
+\(1\)]\))(\!\(\*FractionBox[\(\*SubscriptBox[\(n\), \(i\)] \
+\*SubsuperscriptBox[\(g\), \(ik\), \(P\)]\), \(\*UnderscriptBox[\(\[Sum]\), \
+\(m\)]\*SubscriptBox[\(n\), \(m\)] \*SubsuperscriptBox[\(g\), \(mk\), \
+\(P\)]\)]\)-\!\(\*FractionBox[\(\*SubscriptBox[\(n\), \(i\)] \
+\*SubsuperscriptBox[\(g\), \(ik\), \(c\)]\), \(\*UnderscriptBox[\(\[Sum]\), \
+\(m\)]\*SubscriptBox[\(n\), \(m\)] \*SubsuperscriptBox[\(g\), \(mk\), \
+\(c\)]\)]\))\>\""}], "Input",
+ CellChangeTimes->{{3.7355221047124023`*^9, 3.7355223127491055`*^9}, {
+   3.7355223823013277`*^9, 3.7355223854377804`*^9}, {3.735522443474553*^9, 
+   3.7355224575154333`*^9}, {3.7359423006194696`*^9, 3.7359423088635006`*^9}, 
+   3.7380250865529375`*^9, {3.738025186995485*^9, 3.738025321309956*^9}, {
+   3.738025359871009*^9, 3.738025360371087*^9}, {3.7380254042339892`*^9, 
+   3.7380254047994976`*^9}, {3.7380259988887815`*^9, 
+   3.7380260083826475`*^9}, {3.742591858195851*^9, 
+   3.7425918614120398`*^9}},ExpressionUUID->"ca099732-4d9b-4584-83bb-\
+aaba35c3dd44"],
+
+Cell[BoxData["\<\"\\!\\(\\*SubscriptBox[\\(W\\), \
+\\(ij\\)]\\)=\\!\\(\\*OverscriptBox[UnderscriptBox[\\(\[Sum]\\), \\(k\\)], \
+SubsuperscriptBox[\\(g\\), \\(jk\\), \
+\\(c\\)]]\\){\[Alpha]\\!\\(\\*FractionBox[\\(\\*SubscriptBox[\\(n\\), \
+\\(i\\)] \\*SubsuperscriptBox[\\(g\\), \\(ik\\), \\(P\\)]\\), \
+\\(\\*UnderscriptBox[\\(\[Sum]\\), \\(m\\)]\\*SubscriptBox[\\(n\\), \\(m\\)] \
+\\*SubsuperscriptBox[\\(g\\), \\(mk\\), \\(P\\)]\\)]\\)-\\!\\(\\*FractionBox[\
+\\(\\*SubscriptBox[\\(n\\), \\(i\\)] \\*SubsuperscriptBox[\\(g\\), \\(ik\\), \
+\\(c\\)]\\), \\(\\*UnderscriptBox[\\(\[Sum]\\), \
+\\(m\\)]\\*SubscriptBox[\\(n\\), \\(m\\)] \\*SubsuperscriptBox[\\(g\\), \\(mk\
+\\), \\(c\\)]\\)]\\)}\"\>"], "Output",
+ CellChangeTimes->{3.742591833743458*^9, 3.7425948467034826`*^9, 
+  3.7427601087374134`*^9, 3.742765516716817*^9, 3.742766674593199*^9, 
+  3.742767303068982*^9, 3.742768602133917*^9, 
+  3.742771801611931*^9},ExpressionUUID->"863d3553-ee6c-4f40-afa9-\
+cc377d2f75f2"],
+
+Cell[BoxData["\<\"[\\!\\(\\*SubscriptBox[\\(c\\), \
+\\(k\\)]\\)(\\!\\(\\*SubscriptBox[\\(t\\), \
+\\(2\\)]\\))-\\!\\(\\*SubscriptBox[\\(c\\), \
+\\(k\\)]\\)(\\!\\(\\*SubscriptBox[\\(t\\), \\(1\\)]\\))]\[Proportional] \
+(\\!\\(\\*SubscriptBox[\\(t\\), \\(2\\)]\\)-\\!\\(\\*SubscriptBox[\\(t\\), \
+\\(1\\)]\\))(\\!\\(\\*FractionBox[\\(\\*SubscriptBox[\\(n\\), \\(i\\)] \
+\\*SubsuperscriptBox[\\(g\\), \\(ik\\), \\(P\\)]\\), \\(\\*UnderscriptBox[\\(\
+\[Sum]\\), \\(m\\)]\\*SubscriptBox[\\(n\\), \\(m\\)] \
+\\*SubsuperscriptBox[\\(g\\), \\(mk\\), \\(P\\)]\\)]\\)-\\!\\(\\*FractionBox[\
+\\(\\*SubscriptBox[\\(n\\), \\(i\\)] \\*SubsuperscriptBox[\\(g\\), \\(ik\\), \
+\\(c\\)]\\), \\(\\*UnderscriptBox[\\(\[Sum]\\), \
+\\(m\\)]\\*SubscriptBox[\\(n\\), \\(m\\)] \\*SubsuperscriptBox[\\(g\\), \\(mk\
+\\), \\(c\\)]\\)]\\))\"\>"], "Output",
+ CellChangeTimes->{3.742591833743458*^9, 3.7425948467034826`*^9, 
+  3.7427601087374134`*^9, 3.742765516716817*^9, 3.742766674593199*^9, 
+  3.742767303068982*^9, 3.742768602133917*^9, 
+  3.7427718017788396`*^9},ExpressionUUID->"99f4c4f5-6aec-4508-ae21-\
+26d353cb0b48"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"wijtable", "//", "TableForm"}]], "Input",
+ CellChangeTimes->{{3.736379686947425*^9, 
+  3.7363796935606203`*^9}},ExpressionUUID->"c1c3d198-6b8d-464a-a05d-\
+e31c0e77a164"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Desulfuromonas \
+acetoxidans\"\>", "0.000229`"},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.000229`"},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.000229`"},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Methanoculleus marisnigri\"\>",
+      "0.000399`"},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.000399`"},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000502`"},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Methanospirillum hungatei\"\>",
+      "0.000502`"},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Sphingobium japonicum\"\>", 
+     "0.000177`"},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Streptococcus \
+parasanguinis\"\>", 
+     RowBox[{"-", "0.203`"}]},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.000845`"}]},
+    {"\<\"[C] Acetoin consumers (2)\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.000845`"}]},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"[G] Roseburia (2)\
+\"\>", 
+     RowBox[{"-", "0.00127`"}]},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Catenibacterium \
+mitsuokai\"\>", 
+     RowBox[{"-", "0.00186`"}]},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Desulfuromonas \
+acetoxidans\"\>", "0.000124`"},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Eubacterium \
+rectale\"\>", 
+     RowBox[{"-", "0.00128`"}]},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Methanoculleus \
+marisnigri\"\>", "0.000306`"},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.000306`"},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000347`"},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Methanospirillum \
+hungatei\"\>", "0.000347`"},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Methylobacillus \
+flagellatus\"\>", "0.000171`"},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Sphingobium \
+japonicum\"\>", "0.000136`"},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Streptococcus \
+parasanguinis\"\>", 
+     RowBox[{"-", "0.00528`"}]},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Streptococcus \
+salivarius\"\>", 
+     RowBox[{"-", "0.0116`"}]},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Veillonella \
+atypica\"\>", 
+     RowBox[{"-", "0.00153`"}]},
+    {"\<\"[C] Caproate (Hexanoate) consumers (3)\"\>", "\<\"Veillonella \
+dispar\"\>", 
+     RowBox[{"-", "0.00153`"}]},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"[C] Sulfate producers \
+(22)\"\>", "0.00205`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"[G] Burkholderia (7)\"\>",
+      "0.000847`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"[G] Frankia (2)\"\>", 
+     "0.00883`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"[G] Mesorhizobium \
+(3)\"\>", "0.00883`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"[G] Roseburia (2)\"\>", 
+     RowBox[{"-", "0.000351`"}]},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Agrobacterium tumefaciens\
+\"\>", "0.00782`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Azorhizobium \
+caulinodans\"\>", "0.00883`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Azotobacter \
+vinelandii\"\>", "0.00883`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Beijerinckia indica\"\>", 
+     "0.00883`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Catenibacterium mitsuokai\
+\"\>", 
+     RowBox[{"-", "0.000265`"}]},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Ensifer meliloti\"\>", 
+     "0.00734`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000518`"}]},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Rhizobium leguminosarum\"\
+\>", "0.00734`"},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Streptococcus \
+salivarius\"\>", 
+     RowBox[{"-", "0.000316`"}]},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.000628`"}]},
+    {"\<\"[C] Formaldehyde consumers (3)\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.000628`"}]},
+    {"\<\"[C] Galactitol consumers (2)\"\>", "\<\"[G] Corynebacterium \
+(2)\"\>", "0.00184`"},
+    {"\<\"[C] Galactitol consumers (2)\"\>", "\<\"Colonocyte\"\>", "\<\"n/a\"\
+\>"},
+    {"\<\"[C] Galactitol consumers (2)\"\>", "\<\"Deinococcus \
+radiodurans\"\>", "0.00184`"},
+    {"\<\"[C] Galactitol consumers (2)\"\>", "\<\"Lactobacillus delbrueckii\"\
+\>", "0.000422`"},
+    {"\<\"[C] Galactitol consumers (2)\"\>", "\<\"Pseudomonas aeruginosa\"\>",
+      "0.00184`"},
+    {"\<\"[C] Galactitol consumers (2)\"\>", "\<\"Streptococcus parasanguinis\
+\"\>", 
+     RowBox[{"-", "0.00141`"}]},
+    {"\<\"[C] Galactitol consumers (2)\"\>", "\<\"Streptococcus \
+salivarius\"\>", 
+     RowBox[{"-", "0.00141`"}]},
+    {"\<\"[C] Hydrogen gas consumers & producers (3)\"\>", "\<\"[G] \
+Acidithiobacillus (2)\"\>", "0.000245`"},
+    {"\<\"[C] Hydrogen gas consumers & producers (3)\"\>", "\<\"[G] Roseburia \
+(2)\"\>", 
+     RowBox[{"-", "0.00393`"}]},
+    {"\<\"[C] Hydrogen gas consumers & producers (3)\"\>", \
+"\<\"Acidimicrobium ferrooxidans\"\>", "0.000478`"},
+    {"\<\"[C] Hydrogen gas consumers & producers (3)\"\>", \
+"\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000965`"}]},
+    {"\<\"[C] Hydrogen gas consumers & producers (3)\"\>", "\<\"Chloroflexus \
+aurantiacus\"\>", "0.000478`"},
+    {"\<\"[C] Hydrogen gas consumers & producers (3)\"\>", "\<\"Eubacterium \
+rectale\"\>", 
+     RowBox[{"-", "0.00171`"}]},
+    {"\<\"[C] Hydrogen gas consumers & producers (3)\"\>", "\<\"Veillonella \
+atypica\"\>", 
+     RowBox[{"-", "0.00901`"}]},
+    {"\<\"[C] Hydrogen gas consumers & producers (3)\"\>", "\<\"Veillonella \
+dispar\"\>", 
+     RowBox[{"-", "0.00901`"}]},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Acidimicrobium \
+ferrooxidans\"\>", "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Chloroflexus aurantiacus\"\>", 
+     "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Desulfobacterium autotrophicum\
+\"\>", "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Desulfobulbus propionicus\"\>",
+      "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Desulfovibrio aespoeensis\"\>",
+      "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Desulfovibrio fructosovorans\"\
+\>", "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Ignicoccus hospitalis\"\>", 
+     "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Methanopyrus kandleri\"\>", 
+     "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Methanospirillum hungatei\"\>",
+      "0.000303`"},
+    {"\<\"[C] Methane consumers (9)\"\>", "\<\"Syntrophus aciditrophicus\"\>",
+      "0.000303`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"[G] Roseburia (2)\"\>", 
+     RowBox[{"-", "0.000978`"}]},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Catenibacterium \
+mitsuokai\"\>", 
+     RowBox[{"-", "0.00186`"}]},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Desulfovibrio \
+aespoeensis\"\>", "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Desulfovibrio \
+fructosovorans\"\>", "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Desulfovibrio magneticus\"\>",
+      "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Desulfovibrio salexigens\"\>",
+      "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.00132`"}]},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Methanoculleus \
+marisnigri\"\>", "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Methanospirillum \
+hungatei\"\>", "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Methylobacillus flagellatus\"\
+\>", "0.000394`"},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Mycoplasma capricolum\"\>", 
+     RowBox[{"-", "0.000221`"}]},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Streptococcus parasanguinis\"\
+\>", 
+     RowBox[{"-", "0.0055`"}]},
+    {"\<\"[C] Pimelate consumers (4)\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.0188`"}]},
+    {"\<\"[C] Stearic acid (Stearate) consumers (2)\"\>", "\<\"[G] Roseburia \
+(2)\"\>", 
+     RowBox[{"-", "0.000294`"}]},
+    {"\<\"[C] Stearic acid (Stearate) consumers (2)\"\>", "\<\"Desulfuromonas \
+acetoxidans\"\>", "0.000124`"},
+    {"\<\"[C] Stearic acid (Stearate) consumers (2)\"\>", "\<\"Haloarcula \
+marismortui\"\>", "0.000124`"},
+    {"\<\"[C] Stearic acid (Stearate) consumers (2)\"\>", "\<\"Haloferax \
+volcanii\"\>", "0.000124`"},
+    {"\<\"[C] Stearic acid (Stearate) consumers (2)\"\>", "\<\"Sphingobium \
+japonicum\"\>", "0.000136`"},
+    {"\<\"[C] Stearic acid (Stearate) consumers (2)\"\>", "\<\"Veillonella \
+atypica\"\>", 
+     RowBox[{"-", "0.00153`"}]},
+    {"\<\"[C] Stearic acid (Stearate) consumers (2)\"\>", "\<\"Veillonella \
+dispar\"\>", 
+     RowBox[{"-", "0.00153`"}]},
+    {"\<\"[C] Stearic acid (Stearate) consumers (2)\"\>", "\<\"Xanthomonas \
+campestris\"\>", "0.000124`"},
+    {"\<\"[C] Sulfate producers (22)\"\>", "\<\"[G] Roseburia (2)\"\>", 
+     RowBox[{"-", "0.000119`"}]},
+    {"\<\"[C] Sulfate producers (22)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000441`"}]},
+    {"\<\"[C] Sulfate producers (22)\"\>", "\<\"Nitrosococcus halophilus\"\>",
+      "0.00198`"},
+    {"\<\"[C] Sulfate producers (22)\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.00198`"},
+    {"\<\"[C] Sulfate producers (22)\"\>", "\<\"Nitrosospira multiformis\"\>",
+      "0.00198`"},
+    {"\<\"[C] Sulfate producers (22)\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.00519`"}]},
+    {"\<\"[G] Achromobacter (2)\"\>", "\<\"[G] Roseburia (2)\"\>", 
+     RowBox[{"-", "0.000604`"}]},
+    {"\<\"[G] Achromobacter (2)\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.00336`"}]},
+    {"\<\"[G] Achromobacter (2)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000407`"}]},
+    {"\<\"[G] Achromobacter (2)\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.00872`"}]},
+    {"\<\"[G] Acidithiobacillus (2)\"\>", "\<\"Colonocyte\"\>", "\<\"n/a\"\>"},
+    {"\<\"[G] Acidithiobacillus (2)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.00021`"}]},
+    {"\<\"[G] Aeromonas (2)\"\>", "\<\"[G] Roseburia (2)\"\>", 
+     RowBox[{"-", "0.00234`"}]},
+    {"\<\"[G] Aeromonas (2)\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000948`"}]},
+    {"\<\"[G] Aeromonas (2)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.0027`"}]},
+    {"\<\"[G] Aeromonas (2)\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     RowBox[{"-", "0.000269`"}]},
+    {"\<\"[G] Aeromonas (2)\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.000269`"}]},
+    {"\<\"[G] Aeromonas (2)\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00239`"}]},
+    {"\<\"[G] Aeromonas (2)\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00239`"}]},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"[C] Acetoin consumers (2)\"\>", 
+     "0.102`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"[C] Formaldehyde consumers (3)\"\>",
+      "0.0571`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"[C] Hydrogen gas consumers & \
+producers (3)\"\>", "0.0352`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"[G] Methylobacterium (3)\"\>", 
+     "0.0495`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"[G] Propionibacterium (2)\"\>", 
+     "0.102`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.102`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"Desulfovibrio fructosovorans\"\>", 
+     "0.102`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.102`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.102`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.102`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     "0.102`"},
+    {"\<\"[G] Burkholderia (7)\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     "0.102`"},
+    {"\<\"[G] Corynebacterium (2)\"\>", "\<\"[G] Mycobacterium (4)\"\>", 
+     "0.000115`"},
+    {"\<\"[G] Corynebacterium (2)\"\>", "\<\"Mycoplasma capricolum\"\>", 
+     RowBox[{"-", "0.000221`"}]},
+    {"\<\"[G] Corynebacterium (2)\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     RowBox[{"-", "0.000221`"}]},
+    {"\<\"[G] Corynebacterium (2)\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.00167`"}]},
+    {"\<\"[G] Frankia (2)\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000847`"},
+    {"\<\"[G] Frankia (2)\"\>", "\<\"Nitrosomonas eutropha\"\>", "0.000847`"},
+    {"\<\"[G] Frankia (2)\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000847`"},
+    {"\<\"[G] Frankia (2)\"\>", "\<\"Pseudomonas aeruginosa\"\>", "0.000847`"},
+    {"\<\"[G] Geobacter (5)\"\>", "\<\"[G] Acidithiobacillus (2)\"\>", 
+     "0.00017`"},
+    {"\<\"[G] Geobacter (5)\"\>", "\<\"[G] Roseburia (2)\"\>", 
+     RowBox[{"-", "0.00102`"}]},
+    {"\<\"[G] Geobacter (5)\"\>", "\<\"Acidimicrobium ferrooxidans\"\>", 
+     "0.000332`"},
+    {"\<\"[G] Geobacter (5)\"\>", "\<\"Chloroflexus aurantiacus\"\>", 
+     "0.000332`"},
+    {"\<\"[G] Geobacter (5)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000684`"}]},
+    {"\<\"[G] Geobacter (5)\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000447`"},
+    {"\<\"[G] Geobacter (5)\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000447`"},
+    {"\<\"[G] Geobacter (5)\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000447`"},
+    {"\<\"[G] Mesorhizobium (3)\"\>", "\<\"[C] Pimelate consumers (4)\"\>", 
+     "0.000108`"},
+    {"\<\"[G] Mesorhizobium (3)\"\>", "\<\"[G] Corynebacterium (2)\"\>", 
+     "0.00228`"},
+    {"\<\"[G] Mesorhizobium (3)\"\>", "\<\"Deinococcus radiodurans\"\>", 
+     "0.00228`"},
+    {"\<\"[G] Mesorhizobium (3)\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.00228`"},
+    {"\<\"[G] Mesorhizobium (3)\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000357`"},
+    {"\<\"[G] Mesorhizobium (3)\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000357`"},
+    {"\<\"[G] Mesorhizobium (3)\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000357`"},
+    {"\<\"[G] Mesorhizobium (3)\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.00263`"},
+    {"\<\"[G] Methylobacterium (3)\"\>", "\<\"[G] Roseburia (2)\"\>", 
+     RowBox[{"-", "0.000351`"}]},
+    {"\<\"[G] Methylobacterium (3)\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000265`"}]},
+    {"\<\"[G] Methylobacterium (3)\"\>", "\<\"Colonocyte\"\>", "\<\"n/a\"\>"},
+    {"\<\"[G] Methylobacterium (3)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000518`"}]},
+    {"\<\"[G] Methylobacterium (3)\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.000316`"}]},
+    {"\<\"[G] Methylobacterium (3)\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.000628`"}]},
+    {"\<\"[G] Methylobacterium (3)\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.000628`"}]},
+    {"\<\"[G] Mycobacterium (4)\"\>", "\<\"[G] Corynebacterium (2)\"\>", 
+     "0.00184`"},
+    {"\<\"[G] Mycobacterium (4)\"\>", "\<\"Deinococcus radiodurans\"\>", 
+     "0.00184`"},
+    {"\<\"[G] Mycobacterium (4)\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.000422`"},
+    {"\<\"[G] Mycobacterium (4)\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.00184`"},
+    {"\<\"[G] Mycobacterium (4)\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     RowBox[{"-", "0.00141`"}]},
+    {"\<\"[G] Mycobacterium (4)\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.00141`"}]},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[C] Caproate (Hexanoate) consumers \
+(3)\"\>", "0.146`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[C] Formaldehyde consumers (3)\"\>", 
+     "0.0976`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[C] Hydrogen gas consumers & \
+producers (3)\"\>", "0.0287`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[C] Methane consumers (9)\"\>", 
+     "0.0398`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[C] Pimelate consumers (4)\"\>", 
+     "0.0946`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[C] Sulfate producers (22)\"\>", 
+     "0.0345`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[G] Achromobacter (2)\"\>", 
+     "0.0925`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[G] Geobacter (5)\"\>", "0.122`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"[G] Pyrobaculum (2)\"\>", "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Alicycliphilus denitrificans\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Bacillus amyloliquefaciens\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Bradyrhizobium japonicum\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Chromobacterium violaceum\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Hyphomicrobium denitrificans\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Jonesia denitrificans\"\>", "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Kingella denitrificans\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Moorella thermoacetica\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Pseudomonas entomophila\"\>", 
+     "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Pseudomonas mendocina\"\>", "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Pseudomonas stutzeri\"\>", "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Ralstonia pickettii\"\>", "0.229`"},
+    {"\<\"[G] Nitrobacter (2)\"\>", "\<\"Roseobacter denitrificans\"\>", 
+     "0.229`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"[C] Pimelate consumers \
+(4)\"\>", "0.000128`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"[G] Acidithiobacillus (2)\"\>",
+      "0.000122`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"[G] Corynebacterium (2)\"\>", 
+     "0.00632`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"[G] Geobacter (5)\"\>", 
+     "0.000275`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"[G] Roseburia (2)\"\>", 
+     RowBox[{"-", "0.000591`"}]},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Acidimicrobium \
+ferrooxidans\"\>", "0.000237`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.00113`"}]},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Chloroflexus aurantiacus\"\>", 
+     "0.000237`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Deinococcus radiodurans\"\>", 
+     "0.00632`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Desulfobacterium autotrophicum\
+\"\>", "0.000237`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Desulfuromonas \
+acetoxidans\"\>", "0.000202`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000687`"}]},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Ignicoccus hospitalis\"\>", 
+     "0.000237`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Lactobacillus delbrueckii\"\>",
+      "0.00965`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Methanopyrus kandleri\"\>", 
+     "0.000237`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000439`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Methanospirillum hungatei\"\>",
+      "0.000439`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Paenibacillus larvae\"\>", 
+     "0.00747`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.00364`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Streptococcus \
+parasanguinis\"\>", 
+     RowBox[{"-", "0.000713`"}]},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Syntrophothermus lipocalidus\"\
+\>", "0.000231`"},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.0025`"}]},
+    {"\<\"[G] Propionibacterium (2)\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.0025`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"[C] Hydrogen gas consumers & producers \
+(3)\"\>", 
+     RowBox[{"-", "0.0992`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"[C] Pimelate consumers (4)\"\>", 
+     RowBox[{"-", "0.00662`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"[G] Aeromonas (2)\"\>", 
+     RowBox[{"-", "0.323`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"[G] Propionibacterium (2)\"\>", 
+     RowBox[{"-", "0.0601`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     RowBox[{"-", "0.122`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Aeromicrobium marinum\"\>", 
+     RowBox[{"-", "0.0695`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     "0.252`"},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Comamonas testosteroni\"\>", 
+     RowBox[{"-", "0.196`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     RowBox[{"-", "0.154`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Desulfotomaculum nigrificans\"\>", 
+     RowBox[{"-", "0.196`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Desulfuromonas acetoxidans\"\>", 
+     RowBox[{"-", "0.152`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Haloarcula marismortui\"\>", 
+     RowBox[{"-", "0.0898`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Haloferax volcanii\"\>", 
+     RowBox[{"-", "0.159`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Methanosphaerula palustris\"\>", 
+     RowBox[{"-", "0.0162`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Methanospirillum hungatei\"\>", 
+     RowBox[{"-", "0.0162`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     RowBox[{"-", "0.0383`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Selenomonas artemidis\"\>", 
+     RowBox[{"-", "0.0601`"}]},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     "0.07`"},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Streptococcus salivarius\"\>", "0.07`"},
+    {"\<\"[G] Roseburia (2)\"\>", "\<\"Xanthomonas campestris\"\>", 
+     RowBox[{"-", "0.167`"}]},
+    {"\<\"[G] Streptomyces (3)\"\>", "\<\"[G] Corynebacterium (2)\"\>", 
+     "0.00187`"},
+    {"\<\"[G] Streptomyces (3)\"\>", "\<\"Deinococcus radiodurans\"\>", 
+     "0.00187`"},
+    {"\<\"[G] Streptomyces (3)\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.00187`"},
+    {"\<\"[G] Streptomyces (3)\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.00187`"},
+    {"\<\"Acetobacter pasteurianus\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00077`"}]},
+    {"\<\"Acetobacter pasteurianus\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00077`"}]},
+    {"\<\"Acidimicrobium ferrooxidans\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000117`"}]},
+    {"\<\"Acidiphilium cryptum\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000207`"}]},
+    {"\<\"Acidiphilium cryptum\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000207`"}]},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Acidiphilium cryptum\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Aeromicrobium marinum\"\>", 
+     "0.1`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Agrobacterium \
+tumefaciens\"\>", "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Halobacterium salinarum\"\>",
+      "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Selenomonas artemidis\"\>", 
+     "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Thermococcus gammatolerans\"\
+\>", "0.0333`"},
+    {"\<\"Acidothermus cellulolyticus\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.0333`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     "0.000281`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Acidiphilium cryptum\"\>", 
+     "0.0333`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0333`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.0333`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0333`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Comamonas testosteroni\"\>", 
+     "0.000459`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     "0.000459`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Desulfotomaculum \
+nigrificans\"\>", "0.000459`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.000459`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Desulfovibrio \
+fructosovorans\"\>", "0.000459`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.000459`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.000459`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Desulfuromonas acetoxidans\"\>",
+      "0.000178`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.0335`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Halobacterium salinarum\"\>", 
+     "0.0333`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.134`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Methanosphaerula palustris\"\>",
+      "0.000178`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Methanospirillum hungatei\"\>", 
+     "0.000178`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Moorella thermoacetica\"\>", 
+     "0.000281`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Pelotomaculum thermopropionicum\
+\"\>", "0.000281`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.0336`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.0335`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.0333`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Selenomonas artemidis\"\>", 
+     "0.0336`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Syntrophobacter \
+fumaroxidans\"\>", "0.000281`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Syntrophus aciditrophicus\"\>", 
+     "0.000281`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Thermococcus gammatolerans\"\>",
+      "0.0333`"},
+    {"\<\"Actinomyces urogenitalis\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.0335`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Acidiphilium cryptum\"\>", "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Aeromicrobium marinum\"\>", "0.1`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Halobacterium salinarum\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Haloferax volcanii\"\>", "0.167`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Ralstonia pickettii\"\>", "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Selenomonas artemidis\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Thermococcus gammatolerans\"\>", 
+     "0.0667`"},
+    {"\<\"Actinosynnema mirum\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.0667`"},
+    {"\<\"Aeromicrobium marinum\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.00057`"}]},
+    {"\<\"Aeromicrobium marinum\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.00057`"}]},
+    {"\<\"Aeromicrobium marinum\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     RowBox[{"-", "0.00366`"}]},
+    {"\<\"Aeromicrobium marinum\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.0163`"}]},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     "0.00039`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000172`"}]},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Desulfobulbus propionicus\"\>",
+      "0.000489`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Desulfotomaculum nigrificans\"\
+\>", "0.00039`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Desulfovibrio aespoeensis\"\>",
+      "0.000489`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Desulfovibrio fructosovorans\"\
+\>", "0.000489`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.000489`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.000489`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000222`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000222`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000222`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Pelotomaculum \
+thermopropionicum\"\>", "0.000489`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Syntrophobacter fumaroxidans\"\
+\>", "0.00039`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Syntrophothermus lipocalidus\"\
+\>", "0.00039`"},
+    {"\<\"Agrobacterium tumefaciens\"\>", "\<\"Syntrophus aciditrophicus\"\>",
+      "0.000489`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Deinococcus radiodurans\"\>", 
+     "0.15`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfatibacillum alkenivorans\"\
+\>", "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfobacterium autotrophicum\"\
+\>", "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfococcus oleovorans\"\>", 
+     "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfohalobium retbaense\"\>", 
+     "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfomicrobium baculatum\"\>", 
+     "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfonatronospira \
+thiodismutans\"\>", "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfotomaculum \
+nigrificans\"\>", "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfovibrio \
+fructosovorans\"\>", "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.05`"},
+    {"\<\"Akkermansia muciniphila\"\>", "\<\"Syntrophobacter \
+fumaroxidans\"\>", "0.05`"},
+    {"\<\"Azorhizobium caulinodans\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000538`"},
+    {"\<\"Azorhizobium caulinodans\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000538`"},
+    {"\<\"Azorhizobium caulinodans\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000538`"},
+    {"\<\"Azorhizobium caulinodans\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.000538`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     "0.00143`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Acidimicrobium ferrooxidans\"\>", 
+     "0.000364`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000632`"}]},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Chloroflexus aurantiacus\"\>", 
+     "0.000364`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Desulfobacterium \
+autotrophicum\"\>", "0.000364`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     "0.0018`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Desulfotomaculum nigrificans\"\>",
+      "0.00143`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.0018`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Desulfovibrio fructosovorans\"\>",
+      "0.0018`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.0018`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.0018`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000269`"}]},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Ignicoccus hospitalis\"\>", 
+     "0.000364`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Methanopyrus kandleri\"\>", 
+     "0.000364`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Methanosphaerula palustris\"\>", 
+     "0.000364`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Methanospirillum hungatei\"\>", 
+     "0.000364`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Moorella thermoacetica\"\>", 
+     "0.00143`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000815`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000815`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000815`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Pelotomaculum thermopropionicum\"\
+\>", "0.0018`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.000547`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Syntrophobacter fumaroxidans\"\>",
+      "0.00143`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Syntrophothermus lipocalidus\"\>",
+      "0.00143`"},
+    {"\<\"Azotobacter vinelandii\"\>", "\<\"Syntrophus aciditrophicus\"\>", 
+     "0.0018`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Acidimicrobium ferrooxidans\"\
+\>", "0.000123`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Agrobacterium \
+tumefaciens\"\>", "0.0344`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Azorhizobium caulinodans\"\>",
+      "0.0372`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0372`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Beijerinckia indica\"\>", 
+     "0.0372`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Chloroflexus aurantiacus\"\>",
+      "0.000123`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Desulfobacterium \
+autotrophicum\"\>", "0.000123`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Desulfobulbus \
+propionicus\"\>", "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Desulfovibrio \
+aespoeensis\"\>", "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Desulfovibrio \
+fructosovorans\"\>", "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Desulfovibrio magneticus\"\>",
+      "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Desulfovibrio salexigens\"\>",
+      "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Ensifer meliloti\"\>", 
+     "0.0372`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Ignicoccus hospitalis\"\>", 
+     "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Methanoculleus \
+marisnigri\"\>", "0.000114`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.000114`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Methanopyrus kandleri\"\>", 
+     "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Methanospirillum \
+hungatei\"\>", "0.000237`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Pelotomaculum \
+thermopropionicum\"\>", "0.000123`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Rhizobium leguminosarum\"\>", 
+     "0.0372`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Sphingobium japonicum\"\>", 
+     "0.000114`"},
+    {"\<\"Bacillus amyloliquefaciens\"\>", "\<\"Syntrophus \
+aciditrophicus\"\>", "0.000123`"},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Aeromicrobium marinum\"\>", 
+     RowBox[{"-", "0.00673`"}]},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Eubacterium rectale\"\>", 
+     "0.105`"},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Lactobacillus antri\"\>", 
+     RowBox[{"-", "0.0029`"}]},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Lactobacillus \
+coleohominis\"\>", 
+     RowBox[{"-", "0.0029`"}]},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     RowBox[{"-", "0.00923`"}]},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     RowBox[{"-", "0.00923`"}]},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     RowBox[{"-", "0.00923`"}]},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Lactobacillus vaginalis\"\>", 
+     RowBox[{"-", "0.0029`"}]},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Veillonella atypica\"\>", 
+     "0.00282`"},
+    {"\<\"Catenibacterium mitsuokai\"\>", "\<\"Veillonella dispar\"\>", 
+     "0.00282`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Acidiphilium cryptum\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Aeromicrobium marinum\"\>", 
+     "0.1`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Halobacterium salinarum\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Selenomonas artemidis\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Thermococcus gammatolerans\"\>", 
+     "0.0333`"},
+    {"\<\"Cellulomonas flavigena\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.0333`"},
+    {"\<\"Chloroflexus aurantiacus\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000102`"}]},
+    {"\<\"Comamonas testosteroni\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000422`"}]},
+    {"\<\"Comamonas testosteroni\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00234`"}]},
+    {"\<\"Comamonas testosteroni\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00234`"}]},
+    {"\<\"Deinococcus radiodurans\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.00109`"}]},
+    {"\<\"Deinococcus radiodurans\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.016`"}]},
+    {"\<\"Desulfatibacillum alkenivorans\"\>", "\<\"Methanoculleus marisnigri\
+\"\>", "0.000136`"},
+    {"\<\"Desulfatibacillum alkenivorans\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.000136`"},
+    {"\<\"Desulfatibacillum alkenivorans\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000136`"},
+    {"\<\"Desulfatibacillum alkenivorans\"\>", "\<\"Methanospirillum hungatei\
+\"\>", "0.000136`"},
+    {"\<\"Desulfatibacillum alkenivorans\"\>", "\<\"Methylobacillus \
+flagellatus\"\>", "0.000136`"},
+    {"\<\"Desulfatibacillum alkenivorans\"\>", "\<\"Moorella \
+thermoacetica\"\>", "0.000136`"},
+    {"\<\"Desulfatibacillum alkenivorans\"\>", "\<\"Pseudomonas \
+mendocina\"\>", "0.000136`"},
+    {"\<\"Desulfatibacillum alkenivorans\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.000136`"},
+    {"\<\"Desulfobacterium autotrophicum\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000253`"}]},
+    {"\<\"Desulfobulbus propionicus\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000601`"}]},
+    {"\<\"Desulfobulbus propionicus\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00242`"}]},
+    {"\<\"Desulfobulbus propionicus\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00242`"}]},
+    {"\<\"Desulfotomaculum nigrificans\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.00034`"}]},
+    {"\<\"Desulfotomaculum nigrificans\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00189`"}]},
+    {"\<\"Desulfotomaculum nigrificans\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00189`"}]},
+    {"\<\"Desulfovibrio aespoeensis\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000665`"}]},
+    {"\<\"Desulfovibrio aespoeensis\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00268`"}]},
+    {"\<\"Desulfovibrio aespoeensis\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00268`"}]},
+    {"\<\"Desulfovibrio fructosovorans\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000412`"}]},
+    {"\<\"Desulfovibrio fructosovorans\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00166`"}]},
+    {"\<\"Desulfovibrio fructosovorans\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00166`"}]},
+    {"\<\"Desulfovibrio magneticus\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000706`"}]},
+    {"\<\"Desulfovibrio magneticus\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00285`"}]},
+    {"\<\"Desulfovibrio magneticus\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00285`"}]},
+    {"\<\"Desulfovibrio salexigens\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000439`"}]},
+    {"\<\"Desulfovibrio salexigens\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00177`"}]},
+    {"\<\"Desulfovibrio salexigens\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00177`"}]},
+    {"\<\"Ensifer meliloti\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.00752`"},
+    {"\<\"Ensifer meliloti\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000144`"},
+    {"\<\"Ensifer meliloti\"\>", "\<\"Nitrosomonas eutropha\"\>", "0.000144`"},
+    {"\<\"Ensifer meliloti\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000144`"},
+    {"\<\"Ensifer meliloti\"\>", "\<\"Paenibacillus larvae\"\>", "0.00752`"},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Acidimicrobium ferrooxidans\"\>", 
+     RowBox[{"-", "0.0957`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Acidiphilium cryptum\"\>", 
+     RowBox[{"-", "0.26`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     RowBox[{"-", "0.26`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     RowBox[{"-", "0.26`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     RowBox[{"-", "0.26`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Chloroflexus aurantiacus\"\>", 
+     RowBox[{"-", "0.0957`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Desulfobacterium autotrophicum\"\>", 
+     RowBox[{"-", "0.0957`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Desulfuromonas acetoxidans\"\>", 
+     RowBox[{"-", "0.177`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Haloarcula marismortui\"\>", 
+     RowBox[{"-", "0.437`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Halobacterium salinarum\"\>", 
+     RowBox[{"-", "0.26`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Haloferax volcanii\"\>", 
+     RowBox[{"-", "0.437`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     RowBox[{"-", "0.506`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     RowBox[{"-", "0.506`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     RowBox[{"-", "0.506`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     RowBox[{"-", "0.13`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     RowBox[{"-", "0.239`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Ralstonia pickettii\"\>", 
+     RowBox[{"-", "0.0623`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Selenomonas artemidis\"\>", 
+     RowBox[{"-", "0.0341`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Thermococcus gammatolerans\"\>", 
+     RowBox[{"-", "0.26`"}]},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Veillonella atypica\"\>", "0.226`"},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Veillonella dispar\"\>", "0.226`"},
+    {"\<\"Eubacterium rectale\"\>", "\<\"Xanthomonas campestris\"\>", 
+     RowBox[{"-", "1.03`"}]},
+    {"\<\"Halobacterium salinarum\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000152`"}]},
+    {"\<\"Halobacterium salinarum\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000152`"}]},
+    {"\<\"Haloferax volcanii\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000213`"}]},
+    {"\<\"Haloferax volcanii\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000446`"}]},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     "0.000339`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Comamonas testosteroni\"\>", 
+     "0.00014`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     "0.000458`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Desulfotomaculum nigrificans\"\>", 
+     "0.000394`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.000458`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Desulfovibrio fructosovorans\"\>", 
+     "0.000458`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.000458`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.000458`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Methanosphaerula palustris\"\>", 
+     "0.000119`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Methanospirillum hungatei\"\>", 
+     "0.000119`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Moorella thermoacetica\"\>", 
+     "0.000339`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Mycoplasma capricolum\"\>", 
+     RowBox[{"-", "0.000481`"}]},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Pelotomaculum thermopropionicum\"\>",
+      "0.000403`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.00015`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     RowBox[{"-", "0.00057`"}]},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.00057`"}]},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Syntrophobacter fumaroxidans\"\>", 
+     "0.000339`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Syntrophothermus lipocalidus\"\>", 
+     "0.000253`"},
+    {"\<\"Lactobacillus antri\"\>", "\<\"Syntrophus aciditrophicus\"\>", 
+     "0.000403`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Acetobacter pasteurianus\"\>",
+      "0.000171`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Desulfobulbus \
+propionicus\"\>", "0.000231`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Desulfotomaculum \
+nigrificans\"\>", "0.000199`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Desulfovibrio \
+aespoeensis\"\>", "0.000231`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Desulfovibrio \
+fructosovorans\"\>", "0.000231`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Desulfovibrio magneticus\"\>",
+      "0.000231`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Desulfovibrio salexigens\"\>",
+      "0.000231`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Moorella thermoacetica\"\>", 
+     "0.000171`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Mycoplasma capricolum\"\>", 
+     RowBox[{"-", "0.000243`"}]},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Pelotomaculum \
+thermopropionicum\"\>", "0.000204`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Streptococcus parasanguinis\"\
+\>", 
+     RowBox[{"-", "0.000288`"}]},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.000288`"}]},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Syntrophobacter \
+fumaroxidans\"\>", "0.000171`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Syntrophothermus \
+lipocalidus\"\>", "0.000128`"},
+    {"\<\"Lactobacillus coleohominis\"\>", "\<\"Syntrophus \
+aciditrophicus\"\>", "0.000204`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     "0.00157`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Acidimicrobium \
+ferrooxidans\"\>", "0.000297`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.0013`"}]},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Chloroflexus aurantiacus\"\>", 
+     "0.000297`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Comamonas testosteroni\"\>", 
+     "0.00065`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Desulfobacterium autotrophicum\
+\"\>", "0.000297`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Desulfobulbus propionicus\"\>",
+      "0.00212`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Desulfotomaculum nigrificans\"\
+\>", "0.00182`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Desulfuromonas \
+acetoxidans\"\>", "0.000252`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000343`"}]},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.000252`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.000252`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Ignicoccus hospitalis\"\>", 
+     "0.000297`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Methanopyrus kandleri\"\>", 
+     "0.000297`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000549`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Methanospirillum hungatei\"\>",
+      "0.000549`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Moorella thermoacetica\"\>", 
+     "0.00157`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Mycoplasma capricolum\"\>", 
+     RowBox[{"-", "0.00223`"}]},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Pelotomaculum \
+thermopropionicum\"\>", "0.00187`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.000252`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Selenomonas artemidis\"\>", 
+     "0.000398`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Streptococcus \
+parasanguinis\"\>", 
+     RowBox[{"-", "0.00962`"}]},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.0111`"}]},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Syntrophobacter fumaroxidans\"\
+\>", "0.00157`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Syntrophothermus lipocalidus\"\
+\>", "0.00117`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Syntrophus aciditrophicus\"\>",
+      "0.00187`"},
+    {"\<\"Lactobacillus delbrueckii\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.000252`"},
+    {"\<\"Lactobacillus rhamnosus\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.00046`"},
+    {"\<\"Lactobacillus rhamnosus\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     "0.000109`"},
+    {"\<\"Lactobacillus rhamnosus\"\>", "\<\"Mycoplasma capricolum\"\>", 
+     RowBox[{"-", "0.000115`"}]},
+    {"\<\"Lactobacillus rhamnosus\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     RowBox[{"-", "0.000496`"}]},
+    {"\<\"Lactobacillus rhamnosus\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.000496`"}]},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     "0.000233`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     "0.000315`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Desulfotomaculum \
+nigrificans\"\>", "0.000271`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.000315`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Desulfovibrio \
+fructosovorans\"\>", "0.000315`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.000315`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.000315`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Moorella thermoacetica\"\>", 
+     "0.000233`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Mycoplasma capricolum\"\>", 
+     RowBox[{"-", "0.000331`"}]},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Pelotomaculum \
+thermopropionicum\"\>", "0.000278`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.000103`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     RowBox[{"-", "0.000392`"}]},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.000392`"}]},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Syntrophobacter \
+fumaroxidans\"\>", "0.000233`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Syntrophothermus \
+lipocalidus\"\>", "0.000174`"},
+    {"\<\"Lactobacillus vaginalis\"\>", "\<\"Syntrophus aciditrophicus\"\>", 
+     "0.000278`"},
+    {"\<\"Methanosphaerula palustris\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000153`"}]},
+    {"\<\"Methanospirillum hungatei\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.00027`"}]},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.1`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Desulfovibrio fructosovorans\"\>", 
+     "0.1`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Desulfovibrio magneticus\"\>", "0.1`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Desulfovibrio salexigens\"\>", "0.1`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.1`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Lactobacillus paracasei\"\>", "0.1`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Lactobacillus rhamnosus\"\>", "0.1`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000708`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000708`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000708`"},
+    {"\<\"Micrococcus luteus\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.000708`"},
+    {"\<\"Moorella thermoacetica\"\>", "\<\"Desulfuromonas acetoxidans\"\>", 
+     "0.000187`"},
+    {"\<\"Moorella thermoacetica\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.000187`"},
+    {"\<\"Moorella thermoacetica\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.000187`"},
+    {"\<\"Moorella thermoacetica\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00232`"}]},
+    {"\<\"Moorella thermoacetica\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00232`"}]},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Eubacterium rectale\"\>", 
+     "0.00577`"},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Lactobacillus antri\"\>", 
+     RowBox[{"-", "0.0234`"}]},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Lactobacillus coleohominis\"\>", 
+     RowBox[{"-", "0.0234`"}]},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     RowBox[{"-", "0.0234`"}]},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Lactobacillus fermentum\"\>", 
+     RowBox[{"-", "0.0234`"}]},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     RowBox[{"-", "0.0234`"}]},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     RowBox[{"-", "0.0234`"}]},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Lactobacillus vaginalis\"\>", 
+     RowBox[{"-", "0.0234`"}]},
+    {"\<\"Mycoplasma capricolum\"\>", "\<\"Paenibacillus larvae\"\>", 
+     RowBox[{"-", "0.0234`"}]},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Alicycliphilus denitrificans\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Bacillus amyloliquefaciens\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Bradyrhizobium japonicum\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Chromobacterium violaceum\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Hyphomicrobium denitrificans\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Jonesia denitrificans\"\>", "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Kingella denitrificans\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Moorella thermoacetica\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Pseudomonas entomophila\"\>", 
+     "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Pseudomonas mendocina\"\>", "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Pseudomonas stutzeri\"\>", "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Ralstonia pickettii\"\>", "0.771`"},
+    {"\<\"Nitrococcus mobilis\"\>", "\<\"Roseobacter denitrificans\"\>", 
+     "0.771`"},
+    {"\<\"Paenibacillus larvae\"\>", "\<\"Mycoplasma capricolum\"\>", 
+     RowBox[{"-", "0.00124`"}]},
+    {"\<\"Paenibacillus larvae\"\>", "\<\"Streptococcus parasanguinis\"\>", 
+     RowBox[{"-", "0.00124`"}]},
+    {"\<\"Paenibacillus larvae\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.0141`"}]},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Deinococcus \
+radiodurans\"\>", "0.00338`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Desulfuromonas \
+acetoxidans\"\>", "0.000242`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Ensifer meliloti\"\>", 
+     "0.177`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Haloarcula marismortui\"\
+\>", "0.000242`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.000242`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Ignicoccus \
+hospitalis\"\>", "0.000104`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Methanoculleus \
+marisnigri\"\>", "0.0006`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.0006`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Methanopyrus \
+kandleri\"\>", "0.000104`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.00068`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Methanospirillum \
+hungatei\"\>", "0.00068`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Pseudomonas aeruginosa\"\
+\>", "0.174`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Rhizobium \
+leguminosarum\"\>", "0.177`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Sphingobium \
+japonicum\"\>", "0.000266`"},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00301`"}]},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00301`"}]},
+    {"\<\"Pelotomaculum thermopropionicum\"\>", "\<\"Xanthomonas campestris\"\
+\>", "0.171`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0979`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Azorhizobium caulinodans\"\>", 
+     "0.0962`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0956`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Beijerinckia indica\"\>", 
+     "0.0962`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000551`"}]},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.0929`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Desulfovibrio fructosovorans\"\>",
+      "0.0929`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.0929`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.0929`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Ensifer meliloti\"\>", "0.0834`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000731`"}]},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.0987`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     "0.1`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     "0.1`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Rhizobium leguminosarum\"\>", 
+     "0.0834`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Syntrophothermus lipocalidus\"\>",
+      "0.00125`"},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00334`"}]},
+    {"\<\"Pseudomonas aeruginosa\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00334`"}]},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0408`"},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Azorhizobium caulinodans\"\>", 
+     "0.0442`"},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0442`"},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Beijerinckia indica\"\>", 
+     "0.0442`"},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Ensifer meliloti\"\>", "0.0442`"},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000326`"},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000326`"},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000326`"},
+    {"\<\"Pseudomonas entomophila\"\>", "\<\"Rhizobium leguminosarum\"\>", 
+     "0.0442`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0601`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Azorhizobium caulinodans\"\>", 
+     "0.0654`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0651`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Beijerinckia indica\"\>", 
+     "0.0654`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000375`"}]},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.0955`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Desulfovibrio fructosovorans\"\>", 
+     "0.0955`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.0955`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.0955`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Ensifer meliloti\"\>", "0.0654`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000784`"}]},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.1`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     "0.1`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     "0.1`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000484`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000484`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000484`"},
+    {"\<\"Pseudomonas mendocina\"\>", "\<\"Rhizobium leguminosarum\"\>", 
+     "0.0654`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0402`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Azorhizobium caulinodans\"\>", 
+     "0.0434`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0434`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Beijerinckia indica\"\>", "0.0434`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Ensifer meliloti\"\>", "0.0434`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Nitrosococcus halophilus\"\>", 
+     "0.000321`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Nitrosomonas eutropha\"\>", 
+     "0.000321`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Nitrosospira multiformis\"\>", 
+     "0.000321`"},
+    {"\<\"Pseudomonas stutzeri\"\>", "\<\"Rhizobium leguminosarum\"\>", 
+     "0.0434`"},
+    {"\<\"Rhizobium leguminosarum\"\>", "\<\"Streptococcus salivarius\"\>", 
+     RowBox[{"-", "0.000306`"}]},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Acidiphilium cryptum\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Aeromicrobium marinum\"\>", "0.1`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Halobacterium salinarum\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Haloferax volcanii\"\>", "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Ralstonia pickettii\"\>", "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Selenomonas artemidis\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Thermococcus gammatolerans\"\>", 
+     "0.0333`"},
+    {"\<\"Rhodothermus marinus\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.0333`"},
+    {"\<\"Selenomonas artemidis\"\>", "\<\"Catenibacterium mitsuokai\"\>", 
+     RowBox[{"-", "0.000271`"}]},
+    {"\<\"Selenomonas artemidis\"\>", "\<\"Desulfuromonas acetoxidans\"\>", 
+     "0.000133`"},
+    {"\<\"Selenomonas artemidis\"\>", "\<\"Eubacterium rectale\"\>", 
+     RowBox[{"-", "0.000139`"}]},
+    {"\<\"Selenomonas artemidis\"\>", "\<\"Methanosphaerula palustris\"\>", 
+     "0.000133`"},
+    {"\<\"Selenomonas artemidis\"\>", "\<\"Methanospirillum hungatei\"\>", 
+     "0.000133`"},
+    {"\<\"Selenomonas artemidis\"\>", "\<\"Syntrophothermus lipocalidus\"\>", 
+     "0.000152`"},
+    {"\<\"Selenomonas artemidis\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00165`"}]},
+    {"\<\"Selenomonas artemidis\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00165`"}]},
+    {"\<\"Sphaerobacter thermophilus\"\>", "\<\"Lactobacillus \
+delbrueckii\"\>", "0.0249`"},
+    {"\<\"Sphaerobacter thermophilus\"\>", "\<\"Paenibacillus larvae\"\>", 
+     "0.0311`"},
+    {"\<\"Sphaerobacter thermophilus\"\>", "\<\"Rhizobium leguminosarum\"\>", 
+     "0.00619`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Acidiphilium cryptum\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Aeromicrobium marinum\"\>", 
+     "0.1`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Halobacterium salinarum\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Selenomonas artemidis\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Thermococcus gammatolerans\"\>", 
+     "0.0333`"},
+    {"\<\"Spirochaeta thermophila\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.0333`"},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Aeromicrobium marinum\"\>", 
+     RowBox[{"-", "0.0153`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Lactobacillus antri\"\>", 
+     RowBox[{"-", "0.00661`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Lactobacillus coleohominis\"\
+\>", 
+     RowBox[{"-", "0.00661`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Lactobacillus \
+delbrueckii\"\>", 
+     RowBox[{"-", "0.0241`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Lactobacillus fermentum\"\>", 
+     RowBox[{"-", "0.0219`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     RowBox[{"-", "0.0241`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     RowBox[{"-", "0.0241`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Lactobacillus vaginalis\"\>", 
+     RowBox[{"-", "0.00661`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Paenibacillus larvae\"\>", 
+     RowBox[{"-", "0.00559`"}]},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Veillonella atypica\"\>", 
+     "0.000998`"},
+    {"\<\"Streptococcus parasanguinis\"\>", "\<\"Veillonella dispar\"\>", 
+     "0.000998`"},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Aeromicrobium marinum\"\>", 
+     RowBox[{"-", "0.59`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Deinococcus radiodurans\"\>", 
+     RowBox[{"-", "0.462`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Lactobacillus antri\"\>", 
+     RowBox[{"-", "0.0572`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Lactobacillus coleohominis\"\>", 
+     RowBox[{"-", "0.0572`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     RowBox[{"-", "0.241`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Lactobacillus fermentum\"\>", 
+     RowBox[{"-", "0.19`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     RowBox[{"-", "0.209`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     RowBox[{"-", "0.209`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Lactobacillus vaginalis\"\>", 
+     RowBox[{"-", "0.0572`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Paenibacillus larvae\"\>", 
+     RowBox[{"-", "0.551`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Rhizobium leguminosarum\"\>", 
+     RowBox[{"-", "0.305`"}]},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Veillonella atypica\"\>", 
+     "0.00863`"},
+    {"\<\"Streptococcus salivarius\"\>", "\<\"Veillonella dispar\"\>", 
+     "0.00863`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Acidimicrobium ferrooxidans\
+\"\>", "0.000107`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Chloroflexus \
+aurantiacus\"\>", "0.000107`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Ignicoccus hospitalis\"\>", 
+     "0.000207`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Methanoculleus marisnigri\"\
+\>", "0.000226`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.000226`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Methanopyrus kandleri\"\>", 
+     "0.000207`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000424`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Methanospirillum hungatei\"\
+\>", "0.000424`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Methylobacillus flagellatus\
+\"\>", "0.000126`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.000217`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.000126`"},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00113`"}]},
+    {"\<\"Syntrophobacter fumaroxidans\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00113`"}]},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Desulfuromonas \
+acetoxidans\"\>", "0.000145`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Haloarcula marismortui\"\>",
+      "0.000145`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.000145`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Methanoculleus marisnigri\"\
+\>", "0.0002`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.0002`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000345`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Methanospirillum hungatei\"\
+\>", "0.000345`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Methylobacillus flagellatus\
+\"\>", "0.0002`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.000345`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.0002`"},
+    {"\<\"Syntrophothermus lipocalidus\"\>", "\<\"Xanthomonas campestris\"\>",
+      "0.000145`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Desulfuromonas \
+acetoxidans\"\>", "0.00011`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.00011`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.00011`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Methanoculleus marisnigri\"\>",
+      "0.000273`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Methanoplanus \
+petrolearius\"\>", "0.000273`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Methanosphaerula \
+palustris\"\>", "0.000309`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Methanospirillum hungatei\"\>",
+      "0.000309`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Methylobacillus \
+flagellatus\"\>", "0.000152`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.000262`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.000152`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Sphingobium japonicum\"\>", 
+     "0.000121`"},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Veillonella atypica\"\>", 
+     RowBox[{"-", "0.00137`"}]},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Veillonella dispar\"\>", 
+     RowBox[{"-", "0.00137`"}]},
+    {"\<\"Syntrophus aciditrophicus\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.00011`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Acidiphilium cryptum\"\>", "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Aeromicrobium marinum\"\>", "0.1`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Halobacterium salinarum\"\>", 
+     "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Haloferax volcanii\"\>", "0.167`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Pseudomonas mendocina\"\>", "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Ralstonia pickettii\"\>", "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Selenomonas artemidis\"\>", "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Thermococcus gammatolerans\"\>", 
+     "0.0667`"},
+    {"\<\"Thermobifida fusca\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.0667`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Acidiphilium cryptum\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Aeromicrobium marinum\"\>", 
+     "0.1`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Agrobacterium tumefaciens\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Archaeoglobus fulgidus\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Azotobacter vinelandii\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Haloarcula marismortui\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Halobacterium salinarum\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Haloferax volcanii\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Pseudomonas mendocina\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Ralstonia pickettii\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Selenomonas artemidis\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Thermococcus gammatolerans\"\>", 
+     "0.0333`"},
+    {"\<\"Thermomonospora curvata\"\>", "\<\"Xanthomonas campestris\"\>", 
+     "0.0333`"},
+    {"\<\"Thermus thermophilus\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     "0.1`"},
+    {"\<\"Thermus thermophilus\"\>", "\<\"Desulfovibrio fructosovorans\"\>", 
+     "0.1`"},
+    {"\<\"Thermus thermophilus\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     "0.1`"},
+    {"\<\"Thermus thermophilus\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     "0.1`"},
+    {"\<\"Thermus thermophilus\"\>", "\<\"Lactobacillus delbrueckii\"\>", 
+     "0.1`"},
+    {"\<\"Thermus thermophilus\"\>", "\<\"Lactobacillus paracasei\"\>", 
+     "0.1`"},
+    {"\<\"Thermus thermophilus\"\>", "\<\"Lactobacillus rhamnosus\"\>", 
+     "0.1`"},
+    {"\<\"Thermus thermophilus\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     "0.00342`"},
+    {"\<\"Veillonella atypica\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     RowBox[{"-", "0.00557`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Comamonas testosteroni\"\>", 
+     RowBox[{"-", "0.00461`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     RowBox[{"-", "0.00461`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Desulfotomaculum nigrificans\"\>", 
+     RowBox[{"-", "0.00512`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     RowBox[{"-", "0.00461`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Desulfovibrio fructosovorans\"\>", 
+     RowBox[{"-", "0.00461`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     RowBox[{"-", "0.00461`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     RowBox[{"-", "0.00461`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Eubacterium rectale\"\>", 
+     "0.000449`"},
+    {"\<\"Veillonella atypica\"\>", "\<\"Moorella thermoacetica\"\>", 
+     RowBox[{"-", "0.00557`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Pelotomaculum thermopropionicum\"\>", 
+     RowBox[{"-", "0.00506`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     RowBox[{"-", "0.00557`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Selenomonas artemidis\"\>", 
+     RowBox[{"-", "0.00557`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Syntrophobacter fumaroxidans\"\>", 
+     RowBox[{"-", "0.00506`"}]},
+    {"\<\"Veillonella atypica\"\>", "\<\"Syntrophus aciditrophicus\"\>", 
+     RowBox[{"-", "0.00506`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Acetobacter pasteurianus\"\>", 
+     RowBox[{"-", "0.00267`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Comamonas testosteroni\"\>", 
+     RowBox[{"-", "0.00221`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Desulfobulbus propionicus\"\>", 
+     RowBox[{"-", "0.00221`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Desulfotomaculum nigrificans\"\>", 
+     RowBox[{"-", "0.00246`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Desulfovibrio aespoeensis\"\>", 
+     RowBox[{"-", "0.00221`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Desulfovibrio fructosovorans\"\>", 
+     RowBox[{"-", "0.00221`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Desulfovibrio magneticus\"\>", 
+     RowBox[{"-", "0.00221`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Desulfovibrio salexigens\"\>", 
+     RowBox[{"-", "0.00221`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Eubacterium rectale\"\>", "0.000215`"},
+    {"\<\"Veillonella dispar\"\>", "\<\"Moorella thermoacetica\"\>", 
+     RowBox[{"-", "0.00267`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Pelotomaculum thermopropionicum\"\>", 
+     RowBox[{"-", "0.00243`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Pseudomonas aeruginosa\"\>", 
+     RowBox[{"-", "0.00267`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Selenomonas artemidis\"\>", 
+     RowBox[{"-", "0.00267`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Syntrophobacter fumaroxidans\"\>", 
+     RowBox[{"-", "0.00243`"}]},
+    {"\<\"Veillonella dispar\"\>", "\<\"Syntrophus aciditrophicus\"\>", 
+     RowBox[{"-", "0.00243`"}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7363796944371176`*^9, 3.7380043845112934`*^9, 
+  3.742591833975728*^9, 3.7425948471972017`*^9, 3.7427601094426355`*^9, 
+  3.742765517600339*^9, 3.74276667561761*^9, 3.7427673036156673`*^9, 
+  3.742768602363785*^9, 
+  3.7427718021376314`*^9},ExpressionUUID->"0adc0ead-304d-4516-b4ad-\
+18fd5b32003a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"wijtable", "\[LeftDoubleBracket]", 
+   RowBox[{";;", ",", "3"}], "\[RightDoubleBracket]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.742597786031014*^9, 
+  3.742597800580691*^9}},ExpressionUUID->"567be02e-2e69-482c-b042-\
+7131cea3aa29"],
+
+Cell[BoxData["832"], "Output",
+ CellChangeTimes->{3.742597800878511*^9, 3.7427601098993707`*^9, 
+  3.742765518100378*^9, 3.742766676204276*^9, 3.7427673039174943`*^9, 
+  3.7427686025336885`*^9, 
+  3.7427718031600475`*^9},ExpressionUUID->"eac97e17-2b76-4fad-9e70-\
+f327be6c16ea"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bb", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "0"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.742771705780754*^9, 
+  3.742771723244794*^9}},ExpressionUUID->"e879f6ac-1edb-4fa3-9392-\
+5a7695fadd88"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dobleu", "[", "z_", "]"}], ":=", "\[IndentingNewLine]", "\t", 
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"Length", "[", "z", "]"}]}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", "\t\t", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"N", "[", 
+        RowBox[{"z", "\[LeftDoubleBracket]", 
+         RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}], "]"}], ">", 
+       "0"}], ",", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"bb", ",", 
+        RowBox[{"{", 
+         RowBox[{"z", "\[LeftDoubleBracket]", 
+          RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}], "}"}]}], 
+       "]"}]}], "\[IndentingNewLine]", "]"}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.742592688271617*^9, 3.7425929410115485`*^9}, 
+   3.7425930404659076`*^9, {3.7425965705476217`*^9, 3.742596587404996*^9}, 
+   3.7425966977798347`*^9, {3.7427672462904634`*^9, 3.742767248894972*^9}, {
+   3.7427681878387337`*^9, 3.7427681900974417`*^9}, {3.742768534474642*^9, 
+   3.7427685975855217`*^9}, {3.7427686648900166`*^9, 
+   3.7427686792627954`*^9}, {3.74276896253975*^9, 3.7427690157622895`*^9}, {
+   3.7427691905832815`*^9, 3.742769192329283*^9}, {3.742771729455216*^9, 
+   3.7427717437850127`*^9}, {3.742771869602039*^9, 
+   3.742771879866168*^9}},ExpressionUUID->"ca9aa088-7b70-4578-bfa4-\
+581462c06855"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dobleu", "[", "wijtable", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"bb", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.742769045824092*^9, 3.742769054448163*^9}, {
+  3.7427717812885756`*^9, 
+  3.7427717915606823`*^9}},ExpressionUUID->"22af6a48-5a19-4460-ae35-\
+47181c5d89a6"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {"0.000229`"},
+    {"0.000229`"},
+    {"0.000229`"},
+    {"0.000399`"},
+    {"0.000399`"},
+    {"0.000502`"},
+    {"0.000502`"},
+    {"0.000177`"},
+    {"0.000124`"},
+    {"0.000306`"},
+    {"0.000306`"},
+    {"0.000347`"},
+    {"0.000347`"},
+    {"0.000171`"},
+    {"0.000136`"},
+    {"0.00205`"},
+    {"0.000847`"},
+    {"0.00883`"},
+    {"0.00883`"},
+    {"0.00782`"},
+    {"0.00883`"},
+    {"0.00883`"},
+    {"0.00883`"},
+    {"0.00734`"},
+    {"0.00734`"},
+    {"0.00184`"},
+    {"0.00184`"},
+    {"0.000422`"},
+    {"0.00184`"},
+    {"0.000245`"},
+    {"0.000478`"},
+    {"0.000478`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000124`"},
+    {"0.000124`"},
+    {"0.000124`"},
+    {"0.000136`"},
+    {"0.000124`"},
+    {"0.00198`"},
+    {"0.00198`"},
+    {"0.00198`"},
+    {"0.102`"},
+    {"0.0571`"},
+    {"0.0352`"},
+    {"0.0495`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.000115`"},
+    {"0.000847`"},
+    {"0.000847`"},
+    {"0.000847`"},
+    {"0.000847`"},
+    {"0.00017`"},
+    {"0.000332`"},
+    {"0.000332`"},
+    {"0.000447`"},
+    {"0.000447`"},
+    {"0.000447`"},
+    {"0.000108`"},
+    {"0.00228`"},
+    {"0.00228`"},
+    {"0.00228`"},
+    {"0.000357`"},
+    {"0.000357`"},
+    {"0.000357`"},
+    {"0.00263`"},
+    {"0.00184`"},
+    {"0.00184`"},
+    {"0.000422`"},
+    {"0.00184`"},
+    {"0.146`"},
+    {"0.0976`"},
+    {"0.0287`"},
+    {"0.0398`"},
+    {"0.0946`"},
+    {"0.0345`"},
+    {"0.0925`"},
+    {"0.122`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.000128`"},
+    {"0.000122`"},
+    {"0.00632`"},
+    {"0.000275`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.00632`"},
+    {"0.000237`"},
+    {"0.000202`"},
+    {"0.000237`"},
+    {"0.00965`"},
+    {"0.000237`"},
+    {"0.000439`"},
+    {"0.000439`"},
+    {"0.00747`"},
+    {"0.00364`"},
+    {"0.000231`"},
+    {"0.252`"},
+    {"0.07`"},
+    {"0.07`"},
+    {"0.00187`"},
+    {"0.00187`"},
+    {"0.00187`"},
+    {"0.00187`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000281`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000178`"},
+    {"0.0335`"},
+    {"0.0333`"},
+    {"0.134`"},
+    {"0.000178`"},
+    {"0.000178`"},
+    {"0.000281`"},
+    {"0.000281`"},
+    {"0.0336`"},
+    {"0.0335`"},
+    {"0.0333`"},
+    {"0.0336`"},
+    {"0.000281`"},
+    {"0.000281`"},
+    {"0.0333`"},
+    {"0.0335`"},
+    {"0.0667`"},
+    {"0.1`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.167`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.00039`"},
+    {"0.000489`"},
+    {"0.00039`"},
+    {"0.000489`"},
+    {"0.000489`"},
+    {"0.000489`"},
+    {"0.000489`"},
+    {"0.000222`"},
+    {"0.000222`"},
+    {"0.000222`"},
+    {"0.000489`"},
+    {"0.00039`"},
+    {"0.00039`"},
+    {"0.000489`"},
+    {"0.05`"},
+    {"0.15`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.000538`"},
+    {"0.000538`"},
+    {"0.000538`"},
+    {"0.000538`"},
+    {"0.00143`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.0018`"},
+    {"0.00143`"},
+    {"0.0018`"},
+    {"0.0018`"},
+    {"0.0018`"},
+    {"0.0018`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.00143`"},
+    {"0.000815`"},
+    {"0.000815`"},
+    {"0.000815`"},
+    {"0.0018`"},
+    {"0.000547`"},
+    {"0.00143`"},
+    {"0.00143`"},
+    {"0.0018`"},
+    {"0.000123`"},
+    {"0.0344`"},
+    {"0.0372`"},
+    {"0.0372`"},
+    {"0.0372`"},
+    {"0.000123`"},
+    {"0.000123`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.0372`"},
+    {"0.000237`"},
+    {"0.000114`"},
+    {"0.000114`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000123`"},
+    {"0.0372`"},
+    {"0.000114`"},
+    {"0.000123`"},
+    {"0.105`"},
+    {"0.00282`"},
+    {"0.00282`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.00752`"},
+    {"0.000144`"},
+    {"0.000144`"},
+    {"0.000144`"},
+    {"0.00752`"},
+    {"0.226`"},
+    {"0.226`"},
+    {"0.000339`"},
+    {"0.00014`"},
+    {"0.000458`"},
+    {"0.000394`"},
+    {"0.000458`"},
+    {"0.000458`"},
+    {"0.000458`"},
+    {"0.000458`"},
+    {"0.000119`"},
+    {"0.000119`"},
+    {"0.000339`"},
+    {"0.000403`"},
+    {"0.00015`"},
+    {"0.000339`"},
+    {"0.000253`"},
+    {"0.000403`"},
+    {"0.000171`"},
+    {"0.000231`"},
+    {"0.000199`"},
+    {"0.000231`"},
+    {"0.000231`"},
+    {"0.000231`"},
+    {"0.000231`"},
+    {"0.000171`"},
+    {"0.000204`"},
+    {"0.000171`"},
+    {"0.000128`"},
+    {"0.000204`"},
+    {"0.00157`"},
+    {"0.000297`"},
+    {"0.000297`"},
+    {"0.00065`"},
+    {"0.000297`"},
+    {"0.00212`"},
+    {"0.00182`"},
+    {"0.000252`"},
+    {"0.000252`"},
+    {"0.000252`"},
+    {"0.000297`"},
+    {"0.000297`"},
+    {"0.000549`"},
+    {"0.000549`"},
+    {"0.00157`"},
+    {"0.00187`"},
+    {"0.000252`"},
+    {"0.000398`"},
+    {"0.00157`"},
+    {"0.00117`"},
+    {"0.00187`"},
+    {"0.000252`"},
+    {"0.00046`"},
+    {"0.000109`"},
+    {"0.000233`"},
+    {"0.000315`"},
+    {"0.000271`"},
+    {"0.000315`"},
+    {"0.000315`"},
+    {"0.000315`"},
+    {"0.000315`"},
+    {"0.000233`"},
+    {"0.000278`"},
+    {"0.000103`"},
+    {"0.000233`"},
+    {"0.000174`"},
+    {"0.000278`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.000708`"},
+    {"0.000708`"},
+    {"0.000708`"},
+    {"0.000708`"},
+    {"0.000187`"},
+    {"0.000187`"},
+    {"0.000187`"},
+    {"0.00577`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.00338`"},
+    {"0.000242`"},
+    {"0.177`"},
+    {"0.000242`"},
+    {"0.000242`"},
+    {"0.000104`"},
+    {"0.0006`"},
+    {"0.0006`"},
+    {"0.000104`"},
+    {"0.00068`"},
+    {"0.00068`"},
+    {"0.174`"},
+    {"0.177`"},
+    {"0.000266`"},
+    {"0.171`"},
+    {"0.0979`"},
+    {"0.0962`"},
+    {"0.0956`"},
+    {"0.0962`"},
+    {"0.0929`"},
+    {"0.0929`"},
+    {"0.0929`"},
+    {"0.0929`"},
+    {"0.0834`"},
+    {"0.0987`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.0834`"},
+    {"0.00125`"},
+    {"0.0408`"},
+    {"0.0442`"},
+    {"0.0442`"},
+    {"0.0442`"},
+    {"0.0442`"},
+    {"0.000326`"},
+    {"0.000326`"},
+    {"0.000326`"},
+    {"0.0442`"},
+    {"0.0601`"},
+    {"0.0654`"},
+    {"0.0651`"},
+    {"0.0654`"},
+    {"0.0955`"},
+    {"0.0955`"},
+    {"0.0955`"},
+    {"0.0955`"},
+    {"0.0654`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.000484`"},
+    {"0.000484`"},
+    {"0.000484`"},
+    {"0.0654`"},
+    {"0.0402`"},
+    {"0.0434`"},
+    {"0.0434`"},
+    {"0.0434`"},
+    {"0.0434`"},
+    {"0.000321`"},
+    {"0.000321`"},
+    {"0.000321`"},
+    {"0.0434`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000133`"},
+    {"0.000133`"},
+    {"0.000133`"},
+    {"0.000152`"},
+    {"0.0249`"},
+    {"0.0311`"},
+    {"0.00619`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000998`"},
+    {"0.000998`"},
+    {"0.00863`"},
+    {"0.00863`"},
+    {"0.000107`"},
+    {"0.000107`"},
+    {"0.000207`"},
+    {"0.000226`"},
+    {"0.000226`"},
+    {"0.000207`"},
+    {"0.000424`"},
+    {"0.000424`"},
+    {"0.000126`"},
+    {"0.000217`"},
+    {"0.000126`"},
+    {"0.000145`"},
+    {"0.000145`"},
+    {"0.000145`"},
+    {"0.0002`"},
+    {"0.0002`"},
+    {"0.000345`"},
+    {"0.000345`"},
+    {"0.0002`"},
+    {"0.000345`"},
+    {"0.0002`"},
+    {"0.000145`"},
+    {"0.00011`"},
+    {"0.00011`"},
+    {"0.00011`"},
+    {"0.000273`"},
+    {"0.000273`"},
+    {"0.000309`"},
+    {"0.000309`"},
+    {"0.000152`"},
+    {"0.000262`"},
+    {"0.000152`"},
+    {"0.000121`"},
+    {"0.00011`"},
+    {"0.0667`"},
+    {"0.1`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.167`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.00342`"},
+    {"0.000449`"},
+    {"0.000215`"},
+    {"0.000229`"},
+    {"0.000229`"},
+    {"0.000229`"},
+    {"0.000399`"},
+    {"0.000399`"},
+    {"0.000502`"},
+    {"0.000502`"},
+    {"0.000177`"},
+    {"0.000124`"},
+    {"0.000306`"},
+    {"0.000306`"},
+    {"0.000347`"},
+    {"0.000347`"},
+    {"0.000171`"},
+    {"0.000136`"},
+    {"0.00205`"},
+    {"0.000847`"},
+    {"0.00883`"},
+    {"0.00883`"},
+    {"0.00782`"},
+    {"0.00883`"},
+    {"0.00883`"},
+    {"0.00883`"},
+    {"0.00734`"},
+    {"0.00734`"},
+    {"0.00184`"},
+    {"0.00184`"},
+    {"0.000422`"},
+    {"0.00184`"},
+    {"0.000245`"},
+    {"0.000478`"},
+    {"0.000478`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000303`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000394`"},
+    {"0.000124`"},
+    {"0.000124`"},
+    {"0.000124`"},
+    {"0.000136`"},
+    {"0.000124`"},
+    {"0.00198`"},
+    {"0.00198`"},
+    {"0.00198`"},
+    {"0.102`"},
+    {"0.0571`"},
+    {"0.0352`"},
+    {"0.0495`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.102`"},
+    {"0.000115`"},
+    {"0.000847`"},
+    {"0.000847`"},
+    {"0.000847`"},
+    {"0.000847`"},
+    {"0.00017`"},
+    {"0.000332`"},
+    {"0.000332`"},
+    {"0.000447`"},
+    {"0.000447`"},
+    {"0.000447`"},
+    {"0.000108`"},
+    {"0.00228`"},
+    {"0.00228`"},
+    {"0.00228`"},
+    {"0.000357`"},
+    {"0.000357`"},
+    {"0.000357`"},
+    {"0.00263`"},
+    {"0.00184`"},
+    {"0.00184`"},
+    {"0.000422`"},
+    {"0.00184`"},
+    {"0.146`"},
+    {"0.0976`"},
+    {"0.0287`"},
+    {"0.0398`"},
+    {"0.0946`"},
+    {"0.0345`"},
+    {"0.0925`"},
+    {"0.122`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.229`"},
+    {"0.000128`"},
+    {"0.000122`"},
+    {"0.00632`"},
+    {"0.000275`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.00632`"},
+    {"0.000237`"},
+    {"0.000202`"},
+    {"0.000237`"},
+    {"0.00965`"},
+    {"0.000237`"},
+    {"0.000439`"},
+    {"0.000439`"},
+    {"0.00747`"},
+    {"0.00364`"},
+    {"0.000231`"},
+    {"0.252`"},
+    {"0.07`"},
+    {"0.07`"},
+    {"0.00187`"},
+    {"0.00187`"},
+    {"0.00187`"},
+    {"0.00187`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000281`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000459`"},
+    {"0.000178`"},
+    {"0.0335`"},
+    {"0.0333`"},
+    {"0.134`"},
+    {"0.000178`"},
+    {"0.000178`"},
+    {"0.000281`"},
+    {"0.000281`"},
+    {"0.0336`"},
+    {"0.0335`"},
+    {"0.0333`"},
+    {"0.0336`"},
+    {"0.000281`"},
+    {"0.000281`"},
+    {"0.0333`"},
+    {"0.0335`"},
+    {"0.0667`"},
+    {"0.1`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.167`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.00039`"},
+    {"0.000489`"},
+    {"0.00039`"},
+    {"0.000489`"},
+    {"0.000489`"},
+    {"0.000489`"},
+    {"0.000489`"},
+    {"0.000222`"},
+    {"0.000222`"},
+    {"0.000222`"},
+    {"0.000489`"},
+    {"0.00039`"},
+    {"0.00039`"},
+    {"0.000489`"},
+    {"0.05`"},
+    {"0.15`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.05`"},
+    {"0.000538`"},
+    {"0.000538`"},
+    {"0.000538`"},
+    {"0.000538`"},
+    {"0.00143`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.0018`"},
+    {"0.00143`"},
+    {"0.0018`"},
+    {"0.0018`"},
+    {"0.0018`"},
+    {"0.0018`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.000364`"},
+    {"0.00143`"},
+    {"0.000815`"},
+    {"0.000815`"},
+    {"0.000815`"},
+    {"0.0018`"},
+    {"0.000547`"},
+    {"0.00143`"},
+    {"0.00143`"},
+    {"0.0018`"},
+    {"0.000123`"},
+    {"0.0344`"},
+    {"0.0372`"},
+    {"0.0372`"},
+    {"0.0372`"},
+    {"0.000123`"},
+    {"0.000123`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.0372`"},
+    {"0.000237`"},
+    {"0.000114`"},
+    {"0.000114`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000237`"},
+    {"0.000123`"},
+    {"0.0372`"},
+    {"0.000114`"},
+    {"0.000123`"},
+    {"0.105`"},
+    {"0.00282`"},
+    {"0.00282`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.000136`"},
+    {"0.00752`"},
+    {"0.000144`"},
+    {"0.000144`"},
+    {"0.000144`"},
+    {"0.00752`"},
+    {"0.226`"},
+    {"0.226`"},
+    {"0.000339`"},
+    {"0.00014`"},
+    {"0.000458`"},
+    {"0.000394`"},
+    {"0.000458`"},
+    {"0.000458`"},
+    {"0.000458`"},
+    {"0.000458`"},
+    {"0.000119`"},
+    {"0.000119`"},
+    {"0.000339`"},
+    {"0.000403`"},
+    {"0.00015`"},
+    {"0.000339`"},
+    {"0.000253`"},
+    {"0.000403`"},
+    {"0.000171`"},
+    {"0.000231`"},
+    {"0.000199`"},
+    {"0.000231`"},
+    {"0.000231`"},
+    {"0.000231`"},
+    {"0.000231`"},
+    {"0.000171`"},
+    {"0.000204`"},
+    {"0.000171`"},
+    {"0.000128`"},
+    {"0.000204`"},
+    {"0.00157`"},
+    {"0.000297`"},
+    {"0.000297`"},
+    {"0.00065`"},
+    {"0.000297`"},
+    {"0.00212`"},
+    {"0.00182`"},
+    {"0.000252`"},
+    {"0.000252`"},
+    {"0.000252`"},
+    {"0.000297`"},
+    {"0.000297`"},
+    {"0.000549`"},
+    {"0.000549`"},
+    {"0.00157`"},
+    {"0.00187`"},
+    {"0.000252`"},
+    {"0.000398`"},
+    {"0.00157`"},
+    {"0.00117`"},
+    {"0.00187`"},
+    {"0.000252`"},
+    {"0.00046`"},
+    {"0.000109`"},
+    {"0.000233`"},
+    {"0.000315`"},
+    {"0.000271`"},
+    {"0.000315`"},
+    {"0.000315`"},
+    {"0.000315`"},
+    {"0.000315`"},
+    {"0.000233`"},
+    {"0.000278`"},
+    {"0.000103`"},
+    {"0.000233`"},
+    {"0.000174`"},
+    {"0.000278`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.000708`"},
+    {"0.000708`"},
+    {"0.000708`"},
+    {"0.000708`"},
+    {"0.000187`"},
+    {"0.000187`"},
+    {"0.000187`"},
+    {"0.00577`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.771`"},
+    {"0.00338`"},
+    {"0.000242`"},
+    {"0.177`"},
+    {"0.000242`"},
+    {"0.000242`"},
+    {"0.000104`"},
+    {"0.0006`"},
+    {"0.0006`"},
+    {"0.000104`"},
+    {"0.00068`"},
+    {"0.00068`"},
+    {"0.174`"},
+    {"0.177`"},
+    {"0.000266`"},
+    {"0.171`"},
+    {"0.0979`"},
+    {"0.0962`"},
+    {"0.0956`"},
+    {"0.0962`"},
+    {"0.0929`"},
+    {"0.0929`"},
+    {"0.0929`"},
+    {"0.0929`"},
+    {"0.0834`"},
+    {"0.0987`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.0834`"},
+    {"0.00125`"},
+    {"0.0408`"},
+    {"0.0442`"},
+    {"0.0442`"},
+    {"0.0442`"},
+    {"0.0442`"},
+    {"0.000326`"},
+    {"0.000326`"},
+    {"0.000326`"},
+    {"0.0442`"},
+    {"0.0601`"},
+    {"0.0654`"},
+    {"0.0651`"},
+    {"0.0654`"},
+    {"0.0955`"},
+    {"0.0955`"},
+    {"0.0955`"},
+    {"0.0955`"},
+    {"0.0654`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.000484`"},
+    {"0.000484`"},
+    {"0.000484`"},
+    {"0.0654`"},
+    {"0.0402`"},
+    {"0.0434`"},
+    {"0.0434`"},
+    {"0.0434`"},
+    {"0.0434`"},
+    {"0.000321`"},
+    {"0.000321`"},
+    {"0.000321`"},
+    {"0.0434`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000133`"},
+    {"0.000133`"},
+    {"0.000133`"},
+    {"0.000152`"},
+    {"0.0249`"},
+    {"0.0311`"},
+    {"0.00619`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.000998`"},
+    {"0.000998`"},
+    {"0.00863`"},
+    {"0.00863`"},
+    {"0.000107`"},
+    {"0.000107`"},
+    {"0.000207`"},
+    {"0.000226`"},
+    {"0.000226`"},
+    {"0.000207`"},
+    {"0.000424`"},
+    {"0.000424`"},
+    {"0.000126`"},
+    {"0.000217`"},
+    {"0.000126`"},
+    {"0.000145`"},
+    {"0.000145`"},
+    {"0.000145`"},
+    {"0.0002`"},
+    {"0.0002`"},
+    {"0.000345`"},
+    {"0.000345`"},
+    {"0.0002`"},
+    {"0.000345`"},
+    {"0.0002`"},
+    {"0.000145`"},
+    {"0.00011`"},
+    {"0.00011`"},
+    {"0.00011`"},
+    {"0.000273`"},
+    {"0.000273`"},
+    {"0.000309`"},
+    {"0.000309`"},
+    {"0.000152`"},
+    {"0.000262`"},
+    {"0.000152`"},
+    {"0.000121`"},
+    {"0.00011`"},
+    {"0.0667`"},
+    {"0.1`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.167`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0667`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.0333`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.1`"},
+    {"0.00342`"},
+    {"0.000449`"},
+    {"0.000215`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  TableForm[{
+   0.000229, 0.000229, 0.000229, 0.000399, 0.000399, 0.000502, 0.000502, 
+    0.000177, 0.000124, 0.000306, 0.000306, 0.000347, 0.000347, 0.000171, 
+    0.000136, 0.00205, 0.000847, 0.00883, 0.00883, 0.00782, 0.00883, 0.00883, 
+    0.00883, 0.00734, 0.00734, 0.00184, 0.00184, 0.000422, 0.00184, 0.000245, 
+    0.000478, 0.000478, 0.000303, 0.000303, 0.000303, 0.000303, 0.000303, 
+    0.000303, 0.000303, 0.000303, 0.000303, 0.000303, 0.000303, 0.000303, 
+    0.000303, 0.000394, 0.000394, 0.000394, 0.000394, 0.000394, 0.000394, 
+    0.000394, 0.000394, 0.000394, 0.000124, 0.000124, 0.000124, 0.000136, 
+    0.000124, 0.00198, 0.00198, 0.00198, 0.102, 0.0571, 0.0352, 0.0495, 0.102,
+     0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.102, 0.000115, 0.000847, 
+    0.000847, 0.000847, 0.000847, 0.00017, 0.000332, 0.000332, 0.000447, 
+    0.000447, 0.000447, 0.000108, 0.00228, 0.00228, 0.00228, 0.000357, 
+    0.000357, 0.000357, 0.00263, 0.00184, 0.00184, 0.000422, 0.00184, 0.146, 
+    0.0976, 0.0287, 0.0398, 0.0946, 0.0345, 0.0925, 0.122, 0.229, 0.229, 
+    0.229, 0.229, 0.229, 0.229, 0.229, 0.229, 0.229, 0.229, 0.229, 0.229, 
+    0.229, 0.229, 0.229, 0.229, 0.000128, 0.000122, 0.00632, 0.000275, 
+    0.000237, 0.000237, 0.00632, 0.000237, 0.000202, 0.000237, 0.00965, 
+    0.000237, 0.000439, 0.000439, 0.00747, 0.00364, 0.000231, 0.252, 0.07, 
+    0.07, 0.00187, 0.00187, 0.00187, 0.00187, 0.0333, 0.1, 0.0333, 0.0333, 
+    0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 
+    0.0333, 0.000281, 0.0333, 0.0333, 0.0333, 0.0333, 0.000459, 0.000459, 
+    0.000459, 0.000459, 0.000459, 0.000459, 0.000459, 0.000178, 0.0335, 
+    0.0333, 0.134, 0.000178, 0.000178, 0.000281, 0.000281, 0.0336, 0.0335, 
+    0.0333, 0.0336, 0.000281, 0.000281, 0.0333, 0.0335, 0.0667, 0.1, 0.0667, 
+    0.0667, 0.0667, 0.0667, 0.0667, 0.167, 0.0667, 0.0667, 0.0667, 0.0667, 
+    0.0667, 0.0667, 0.00039, 0.000489, 0.00039, 0.000489, 0.000489, 0.000489, 
+    0.000489, 0.000222, 0.000222, 0.000222, 0.000489, 0.00039, 0.00039, 
+    0.000489, 0.05, 0.15, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 
+    0.05, 0.05, 0.05, 0.05, 0.05, 0.000538, 0.000538, 0.000538, 0.000538, 
+    0.00143, 0.000364, 0.000364, 0.000364, 0.0018, 0.00143, 0.0018, 0.0018, 
+    0.0018, 0.0018, 0.000364, 0.000364, 0.000364, 0.000364, 0.00143, 0.000815,
+     0.000815, 0.000815, 0.0018, 0.000547, 0.00143, 0.00143, 0.0018, 0.000123,
+     0.0344, 0.0372, 0.0372, 0.0372, 0.000123, 0.000123, 0.000237, 0.000237, 
+    0.000237, 0.000237, 0.000237, 0.0372, 0.000237, 0.000114, 0.000114, 
+    0.000237, 0.000237, 0.000237, 0.000123, 0.0372, 0.000114, 0.000123, 0.105,
+     0.00282, 0.00282, 0.0333, 0.1, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 
+    0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.000136, 
+    0.000136, 0.000136, 0.000136, 0.000136, 0.000136, 0.000136, 0.000136, 
+    0.00752, 0.000144, 0.000144, 0.000144, 0.00752, 0.226, 0.226, 0.000339, 
+    0.00014, 0.000458, 0.000394, 0.000458, 0.000458, 0.000458, 0.000458, 
+    0.000119, 0.000119, 0.000339, 0.000403, 0.00015, 0.000339, 0.000253, 
+    0.000403, 0.000171, 0.000231, 0.000199, 0.000231, 0.000231, 0.000231, 
+    0.000231, 0.000171, 0.000204, 0.000171, 0.000128, 0.000204, 0.00157, 
+    0.000297, 0.000297, 0.00065, 0.000297, 0.00212, 0.00182, 0.000252, 
+    0.000252, 0.000252, 0.000297, 0.000297, 0.000549, 0.000549, 0.00157, 
+    0.00187, 0.000252, 0.000398, 0.00157, 0.00117, 0.00187, 0.000252, 0.00046,
+     0.000109, 0.000233, 0.000315, 0.000271, 0.000315, 0.000315, 0.000315, 
+    0.000315, 0.000233, 0.000278, 0.000103, 0.000233, 0.000174, 0.000278, 0.1,
+     0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.000708, 0.000708, 0.000708, 0.000708, 
+    0.000187, 0.000187, 0.000187, 0.00577, 0.771, 0.771, 0.771, 0.771, 0.771, 
+    0.771, 0.771, 0.771, 0.771, 0.771, 0.771, 0.771, 0.771, 0.771, 0.771, 
+    0.00338, 0.000242, 0.177, 0.000242, 0.000242, 0.000104, 0.0006, 0.0006, 
+    0.000104, 0.00068, 0.00068, 0.174, 0.177, 0.000266, 0.171, 0.0979, 0.0962,
+     0.0956, 0.0962, 0.0929, 0.0929, 0.0929, 0.0929, 0.0834, 0.0987, 0.1, 0.1,
+     0.0834, 0.00125, 0.0408, 0.0442, 0.0442, 0.0442, 0.0442, 0.000326, 
+    0.000326, 0.000326, 0.0442, 0.0601, 0.0654, 0.0651, 0.0654, 0.0955, 
+    0.0955, 0.0955, 0.0955, 0.0654, 0.1, 0.1, 0.1, 0.000484, 0.000484, 
+    0.000484, 0.0654, 0.0402, 0.0434, 0.0434, 0.0434, 0.0434, 0.000321, 
+    0.000321, 0.000321, 0.0434, 0.0333, 0.1, 0.0333, 0.0333, 0.0333, 0.0333, 
+    0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.000133, 
+    0.000133, 0.000133, 0.000152, 0.0249, 0.0311, 0.00619, 0.0333, 0.1, 
+    0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 
+    0.0333, 0.0333, 0.0333, 0.000998, 0.000998, 0.00863, 0.00863, 0.000107, 
+    0.000107, 0.000207, 0.000226, 0.000226, 0.000207, 0.000424, 0.000424, 
+    0.000126, 0.000217, 0.000126, 0.000145, 0.000145, 0.000145, 0.0002, 
+    0.0002, 0.000345, 0.000345, 0.0002, 0.000345, 0.0002, 0.000145, 0.00011, 
+    0.00011, 0.00011, 0.000273, 0.000273, 0.000309, 0.000309, 0.000152, 
+    0.000262, 0.000152, 0.000121, 0.00011, 0.0667, 0.1, 0.0667, 0.0667, 
+    0.0667, 0.0667, 0.0667, 0.167, 0.0667, 0.0667, 0.0667, 0.0667, 0.0667, 
+    0.0667, 0.0333, 0.1, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 
+    0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.0333, 0.1, 0.1, 0.1, 0.1, 0.1, 
+    0.1, 0.1, 0.00342, 0.000449, 0.000215, {0.000229}, {0.000229}, {
+    0.000229}, {0.000399}, {0.000399}, {0.000502}, {0.000502}, {0.000177}, {
+    0.000124}, {0.000306}, {0.000306}, {0.000347}, {0.000347}, {0.000171}, {
+    0.000136}, {0.00205}, {0.000847}, {0.00883}, {0.00883}, {0.00782}, {
+    0.00883}, {0.00883}, {0.00883}, {0.00734}, {0.00734}, {0.00184}, {
+    0.00184}, {0.000422}, {0.00184}, {0.000245}, {0.000478}, {0.000478}, {
+    0.000303}, {0.000303}, {0.000303}, {0.000303}, {0.000303}, {0.000303}, {
+    0.000303}, {0.000303}, {0.000303}, {0.000303}, {0.000303}, {0.000303}, {
+    0.000303}, {0.000394}, {0.000394}, {0.000394}, {0.000394}, {0.000394}, {
+    0.000394}, {0.000394}, {0.000394}, {0.000394}, {0.000124}, {0.000124}, {
+    0.000124}, {0.000136}, {0.000124}, {0.00198}, {0.00198}, {0.00198}, {
+    0.102}, {0.0571}, {0.0352}, {0.0495}, {0.102}, {0.102}, {0.102}, {
+    0.102}, {0.102}, {0.102}, {0.102}, {0.102}, {0.000115}, {0.000847}, {
+    0.000847}, {0.000847}, {0.000847}, {0.00017}, {0.000332}, {0.000332}, {
+    0.000447}, {0.000447}, {0.000447}, {0.000108}, {0.00228}, {0.00228}, {
+    0.00228}, {0.000357}, {0.000357}, {0.000357}, {0.00263}, {0.00184}, {
+    0.00184}, {0.000422}, {0.00184}, {0.146}, {0.0976}, {0.0287}, {0.0398}, {
+    0.0946}, {0.0345}, {0.0925}, {0.122}, {0.229}, {0.229}, {0.229}, {
+    0.229}, {0.229}, {0.229}, {0.229}, {0.229}, {0.229}, {0.229}, {0.229}, {
+    0.229}, {0.229}, {0.229}, {0.229}, {0.229}, {0.000128}, {0.000122}, {
+    0.00632}, {0.000275}, {0.000237}, {0.000237}, {0.00632}, {0.000237}, {
+    0.000202}, {0.000237}, {0.00965}, {0.000237}, {0.000439}, {0.000439}, {
+    0.00747}, {0.00364}, {0.000231}, {0.252}, {0.07}, {0.07}, {0.00187}, {
+    0.00187}, {0.00187}, {0.00187}, {0.0333}, {0.1}, {0.0333}, {0.0333}, {
+    0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {
+    0.0333}, {0.0333}, {0.0333}, {0.000281}, {0.0333}, {0.0333}, {0.0333}, {
+    0.0333}, {0.000459}, {0.000459}, {0.000459}, {0.000459}, {0.000459}, {
+    0.000459}, {0.000459}, {0.000178}, {0.0335}, {0.0333}, {0.134}, {
+    0.000178}, {0.000178}, {0.000281}, {0.000281}, {0.0336}, {0.0335}, {
+    0.0333}, {0.0336}, {0.000281}, {0.000281}, {0.0333}, {0.0335}, {0.0667}, {
+    0.1}, {0.0667}, {0.0667}, {0.0667}, {0.0667}, {0.0667}, {0.167}, {
+    0.0667}, {0.0667}, {0.0667}, {0.0667}, {0.0667}, {0.0667}, {0.00039}, {
+    0.000489}, {0.00039}, {0.000489}, {0.000489}, {0.000489}, {0.000489}, {
+    0.000222}, {0.000222}, {0.000222}, {0.000489}, {0.00039}, {0.00039}, {
+    0.000489}, {0.05}, {0.15}, {0.05}, {0.05}, {0.05}, {0.05}, {0.05}, {
+    0.05}, {0.05}, {0.05}, {0.05}, {0.05}, {0.05}, {0.05}, {0.05}, {
+    0.000538}, {0.000538}, {0.000538}, {0.000538}, {0.00143}, {0.000364}, {
+    0.000364}, {0.000364}, {0.0018}, {0.00143}, {0.0018}, {0.0018}, {
+    0.0018}, {0.0018}, {0.000364}, {0.000364}, {0.000364}, {0.000364}, {
+    0.00143}, {0.000815}, {0.000815}, {0.000815}, {0.0018}, {0.000547}, {
+    0.00143}, {0.00143}, {0.0018}, {0.000123}, {0.0344}, {0.0372}, {0.0372}, {
+    0.0372}, {0.000123}, {0.000123}, {0.000237}, {0.000237}, {0.000237}, {
+    0.000237}, {0.000237}, {0.0372}, {0.000237}, {0.000114}, {0.000114}, {
+    0.000237}, {0.000237}, {0.000237}, {0.000123}, {0.0372}, {0.000114}, {
+    0.000123}, {0.105}, {0.00282}, {0.00282}, {0.0333}, {0.1}, {0.0333}, {
+    0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {
+    0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.000136}, {0.000136}, {
+    0.000136}, {0.000136}, {0.000136}, {0.000136}, {0.000136}, {0.000136}, {
+    0.00752}, {0.000144}, {0.000144}, {0.000144}, {0.00752}, {0.226}, {
+    0.226}, {0.000339}, {0.00014}, {0.000458}, {0.000394}, {0.000458}, {
+    0.000458}, {0.000458}, {0.000458}, {0.000119}, {0.000119}, {0.000339}, {
+    0.000403}, {0.00015}, {0.000339}, {0.000253}, {0.000403}, {0.000171}, {
+    0.000231}, {0.000199}, {0.000231}, {0.000231}, {0.000231}, {0.000231}, {
+    0.000171}, {0.000204}, {0.000171}, {0.000128}, {0.000204}, {0.00157}, {
+    0.000297}, {0.000297}, {0.00065}, {0.000297}, {0.00212}, {0.00182}, {
+    0.000252}, {0.000252}, {0.000252}, {0.000297}, {0.000297}, {0.000549}, {
+    0.000549}, {0.00157}, {0.00187}, {0.000252}, {0.000398}, {0.00157}, {
+    0.00117}, {0.00187}, {0.000252}, {0.00046}, {0.000109}, {0.000233}, {
+    0.000315}, {0.000271}, {0.000315}, {0.000315}, {0.000315}, {0.000315}, {
+    0.000233}, {0.000278}, {0.000103}, {0.000233}, {0.000174}, {0.000278}, {
+    0.1}, {0.1}, {0.1}, {0.1}, {0.1}, {0.1}, {0.1}, {0.000708}, {0.000708}, {
+    0.000708}, {0.000708}, {0.000187}, {0.000187}, {0.000187}, {0.00577}, {
+    0.771}, {0.771}, {0.771}, {0.771}, {0.771}, {0.771}, {0.771}, {0.771}, {
+    0.771}, {0.771}, {0.771}, {0.771}, {0.771}, {0.771}, {0.771}, {0.00338}, {
+    0.000242}, {0.177}, {0.000242}, {0.000242}, {0.000104}, {0.0006}, {
+    0.0006}, {0.000104}, {0.00068}, {0.00068}, {0.174}, {0.177}, {0.000266}, {
+    0.171}, {0.0979}, {0.0962}, {0.0956}, {0.0962}, {0.0929}, {0.0929}, {
+    0.0929}, {0.0929}, {0.0834}, {0.0987}, {0.1}, {0.1}, {0.0834}, {
+    0.00125}, {0.0408}, {0.0442}, {0.0442}, {0.0442}, {0.0442}, {0.000326}, {
+    0.000326}, {0.000326}, {0.0442}, {0.0601}, {0.0654}, {0.0651}, {0.0654}, {
+    0.0955}, {0.0955}, {0.0955}, {0.0955}, {0.0654}, {0.1}, {0.1}, {0.1}, {
+    0.000484}, {0.000484}, {0.000484}, {0.0654}, {0.0402}, {0.0434}, {
+    0.0434}, {0.0434}, {0.0434}, {0.000321}, {0.000321}, {0.000321}, {
+    0.0434}, {0.0333}, {0.1}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {
+    0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {
+    0.0333}, {0.000133}, {0.000133}, {0.000133}, {0.000152}, {0.0249}, {
+    0.0311}, {0.00619}, {0.0333}, {0.1}, {0.0333}, {0.0333}, {0.0333}, {
+    0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {
+    0.0333}, {0.0333}, {0.000998}, {0.000998}, {0.00863}, {0.00863}, {
+    0.000107}, {0.000107}, {0.000207}, {0.000226}, {0.000226}, {0.000207}, {
+    0.000424}, {0.000424}, {0.000126}, {0.000217}, {0.000126}, {0.000145}, {
+    0.000145}, {0.000145}, {0.0002}, {0.0002}, {0.000345}, {0.000345}, {
+    0.0002}, {0.000345}, {0.0002}, {0.000145}, {0.00011}, {0.00011}, {
+    0.00011}, {0.000273}, {0.000273}, {0.000309}, {0.000309}, {0.000152}, {
+    0.000262}, {0.000152}, {0.000121}, {0.00011}, {0.0667}, {0.1}, {0.0667}, {
+    0.0667}, {0.0667}, {0.0667}, {0.0667}, {0.167}, {0.0667}, {0.0667}, {
+    0.0667}, {0.0667}, {0.0667}, {0.0667}, {0.0333}, {0.1}, {0.0333}, {
+    0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.0333}, {
+    0.0333}, {0.0333}, {0.0333}, {0.0333}, {0.1}, {0.1}, {0.1}, {0.1}, {
+    0.1}, {0.1}, {0.1}, {0.00342}, {0.000449}, {0.000215}}]]], "Output",
+ CellChangeTimes->{3.7427718035468245`*^9, 
+  3.7427718841507125`*^9},ExpressionUUID->"7d3e3e2b-f8df-4424-8607-\
+135b4f9097e3"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "0.000215`"}]], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{3.742769114394865*^9, 
+  3.7427703361552105`*^9},ExpressionUUID->"212430cd-8ac7-4491-831e-\
+b4a06a5b093f"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"aa", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "0"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.742770803377797*^9, 
+  3.7427708083319817`*^9}},ExpressionUUID->"c1d2e4d0-1283-4ab0-97ca-\
+fcccc7d20149"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"uve", "[", "z_", "]"}], ":=", "\[IndentingNewLine]", "\t", 
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"Length", "[", "z", "]"}]}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", "\t\t", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"N", "[", 
+        RowBox[{"z", "\[LeftDoubleBracket]", 
+         RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}], "]"}], "<", 
+       "0"}], ",", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"aa", ",", 
+        RowBox[{"{", 
+         RowBox[{"z", "\[LeftDoubleBracket]", 
+          RowBox[{"i", ",", "3"}], "\[RightDoubleBracket]"}], "}"}]}], 
+       "]"}]}], "\n", "]"}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.7427691320337734`*^9, 3.7427691395424957`*^9}, {
+  3.742769200487614*^9, 3.7427692429723177`*^9}, {3.7427693004344373`*^9, 
+  3.742769383287056*^9}, {3.7427694397837257`*^9, 3.7427694447039037`*^9}, {
+  3.7427695396385956`*^9, 3.7427695409088693`*^9}, {3.742769594762579*^9, 
+  3.7427696241677556`*^9}, {3.742770640813799*^9, 3.7427707117881966`*^9}, {
+  3.742770759465949*^9, 3.742770774238469*^9}, {3.742770930975966*^9, 
+  3.7427709338243093`*^9}},ExpressionUUID->"813ece71-0021-40dc-a130-\
+f6c1254f0864"],
+
+Cell[BoxData[
+ RowBox[{"uve", "[", "wijtable", "]"}]], "Input",
+ CellChangeTimes->{{3.7427693943457117`*^9, 3.7427693998825626`*^9}, {
+  3.7427697242934737`*^9, 3.74276973174524*^9}, {3.7427703327391653`*^9, 
+  3.7427703329770308`*^9}},ExpressionUUID->"f1b6b9f1-05b7-42ae-8dec-\
+bed9422127b7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"aa", "//", "TableForm"}]], "Input",
+ CellChangeTimes->{{3.7427714934822073`*^9, 
+  3.742771530784865*^9}},ExpressionUUID->"b88b97cc-c703-4172-96b1-\
+0ff3eb680d9c"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{"-", "0.203`"}]},
+    {
+     RowBox[{"-", "0.000845`"}]},
+    {
+     RowBox[{"-", "0.000845`"}]},
+    {
+     RowBox[{"-", "0.00127`"}]},
+    {
+     RowBox[{"-", "0.00186`"}]},
+    {
+     RowBox[{"-", "0.00128`"}]},
+    {
+     RowBox[{"-", "0.00528`"}]},
+    {
+     RowBox[{"-", "0.0116`"}]},
+    {
+     RowBox[{"-", "0.00153`"}]},
+    {
+     RowBox[{"-", "0.00153`"}]},
+    {
+     RowBox[{"-", "0.000351`"}]},
+    {
+     RowBox[{"-", "0.000265`"}]},
+    {
+     RowBox[{"-", "0.000518`"}]},
+    {
+     RowBox[{"-", "0.000316`"}]},
+    {
+     RowBox[{"-", "0.000628`"}]},
+    {
+     RowBox[{"-", "0.000628`"}]},
+    {
+     RowBox[{"-", "0.00141`"}]},
+    {
+     RowBox[{"-", "0.00141`"}]},
+    {
+     RowBox[{"-", "0.00393`"}]},
+    {
+     RowBox[{"-", "0.000965`"}]},
+    {
+     RowBox[{"-", "0.00171`"}]},
+    {
+     RowBox[{"-", "0.00901`"}]},
+    {
+     RowBox[{"-", "0.00901`"}]},
+    {
+     RowBox[{"-", "0.000978`"}]},
+    {
+     RowBox[{"-", "0.00186`"}]},
+    {
+     RowBox[{"-", "0.00132`"}]},
+    {
+     RowBox[{"-", "0.000221`"}]},
+    {
+     RowBox[{"-", "0.0055`"}]},
+    {
+     RowBox[{"-", "0.0188`"}]},
+    {
+     RowBox[{"-", "0.000294`"}]},
+    {
+     RowBox[{"-", "0.00153`"}]},
+    {
+     RowBox[{"-", "0.00153`"}]},
+    {
+     RowBox[{"-", "0.000119`"}]},
+    {
+     RowBox[{"-", "0.000441`"}]},
+    {
+     RowBox[{"-", "0.00519`"}]},
+    {
+     RowBox[{"-", "0.000604`"}]},
+    {
+     RowBox[{"-", "0.00336`"}]},
+    {
+     RowBox[{"-", "0.000407`"}]},
+    {
+     RowBox[{"-", "0.00872`"}]},
+    {
+     RowBox[{"-", "0.00021`"}]},
+    {
+     RowBox[{"-", "0.00234`"}]},
+    {
+     RowBox[{"-", "0.000948`"}]},
+    {
+     RowBox[{"-", "0.0027`"}]},
+    {
+     RowBox[{"-", "0.000269`"}]},
+    {
+     RowBox[{"-", "0.000269`"}]},
+    {
+     RowBox[{"-", "0.00239`"}]},
+    {
+     RowBox[{"-", "0.00239`"}]},
+    {
+     RowBox[{"-", "0.000221`"}]},
+    {
+     RowBox[{"-", "0.000221`"}]},
+    {
+     RowBox[{"-", "0.00167`"}]},
+    {
+     RowBox[{"-", "0.00102`"}]},
+    {
+     RowBox[{"-", "0.000684`"}]},
+    {
+     RowBox[{"-", "0.000351`"}]},
+    {
+     RowBox[{"-", "0.000265`"}]},
+    {
+     RowBox[{"-", "0.000518`"}]},
+    {
+     RowBox[{"-", "0.000316`"}]},
+    {
+     RowBox[{"-", "0.000628`"}]},
+    {
+     RowBox[{"-", "0.000628`"}]},
+    {
+     RowBox[{"-", "0.00141`"}]},
+    {
+     RowBox[{"-", "0.00141`"}]},
+    {
+     RowBox[{"-", "0.000591`"}]},
+    {
+     RowBox[{"-", "0.00113`"}]},
+    {
+     RowBox[{"-", "0.000687`"}]},
+    {
+     RowBox[{"-", "0.000713`"}]},
+    {
+     RowBox[{"-", "0.0025`"}]},
+    {
+     RowBox[{"-", "0.0025`"}]},
+    {
+     RowBox[{"-", "0.0992`"}]},
+    {
+     RowBox[{"-", "0.00662`"}]},
+    {
+     RowBox[{"-", "0.323`"}]},
+    {
+     RowBox[{"-", "0.0601`"}]},
+    {
+     RowBox[{"-", "0.122`"}]},
+    {
+     RowBox[{"-", "0.0695`"}]},
+    {
+     RowBox[{"-", "0.196`"}]},
+    {
+     RowBox[{"-", "0.154`"}]},
+    {
+     RowBox[{"-", "0.196`"}]},
+    {
+     RowBox[{"-", "0.152`"}]},
+    {
+     RowBox[{"-", "0.0898`"}]},
+    {
+     RowBox[{"-", "0.159`"}]},
+    {
+     RowBox[{"-", "0.0162`"}]},
+    {
+     RowBox[{"-", "0.0162`"}]},
+    {
+     RowBox[{"-", "0.0383`"}]},
+    {
+     RowBox[{"-", "0.0601`"}]},
+    {
+     RowBox[{"-", "0.167`"}]},
+    {
+     RowBox[{"-", "0.00077`"}]},
+    {
+     RowBox[{"-", "0.00077`"}]},
+    {
+     RowBox[{"-", "0.000117`"}]},
+    {
+     RowBox[{"-", "0.000207`"}]},
+    {
+     RowBox[{"-", "0.000207`"}]},
+    {
+     RowBox[{"-", "0.00057`"}]},
+    {
+     RowBox[{"-", "0.00057`"}]},
+    {
+     RowBox[{"-", "0.00366`"}]},
+    {
+     RowBox[{"-", "0.0163`"}]},
+    {
+     RowBox[{"-", "0.000172`"}]},
+    {
+     RowBox[{"-", "0.000632`"}]},
+    {
+     RowBox[{"-", "0.000269`"}]},
+    {
+     RowBox[{"-", "0.00673`"}]},
+    {
+     RowBox[{"-", "0.0029`"}]},
+    {
+     RowBox[{"-", "0.0029`"}]},
+    {
+     RowBox[{"-", "0.00923`"}]},
+    {
+     RowBox[{"-", "0.00923`"}]},
+    {
+     RowBox[{"-", "0.00923`"}]},
+    {
+     RowBox[{"-", "0.0029`"}]},
+    {
+     RowBox[{"-", "0.000102`"}]},
+    {
+     RowBox[{"-", "0.000422`"}]},
+    {
+     RowBox[{"-", "0.00234`"}]},
+    {
+     RowBox[{"-", "0.00234`"}]},
+    {
+     RowBox[{"-", "0.00109`"}]},
+    {
+     RowBox[{"-", "0.016`"}]},
+    {
+     RowBox[{"-", "0.000253`"}]},
+    {
+     RowBox[{"-", "0.000601`"}]},
+    {
+     RowBox[{"-", "0.00242`"}]},
+    {
+     RowBox[{"-", "0.00242`"}]},
+    {
+     RowBox[{"-", "0.00034`"}]},
+    {
+     RowBox[{"-", "0.00189`"}]},
+    {
+     RowBox[{"-", "0.00189`"}]},
+    {
+     RowBox[{"-", "0.000665`"}]},
+    {
+     RowBox[{"-", "0.00268`"}]},
+    {
+     RowBox[{"-", "0.00268`"}]},
+    {
+     RowBox[{"-", "0.000412`"}]},
+    {
+     RowBox[{"-", "0.00166`"}]},
+    {
+     RowBox[{"-", "0.00166`"}]},
+    {
+     RowBox[{"-", "0.000706`"}]},
+    {
+     RowBox[{"-", "0.00285`"}]},
+    {
+     RowBox[{"-", "0.00285`"}]},
+    {
+     RowBox[{"-", "0.000439`"}]},
+    {
+     RowBox[{"-", "0.00177`"}]},
+    {
+     RowBox[{"-", "0.00177`"}]},
+    {
+     RowBox[{"-", "0.0957`"}]},
+    {
+     RowBox[{"-", "0.26`"}]},
+    {
+     RowBox[{"-", "0.26`"}]},
+    {
+     RowBox[{"-", "0.26`"}]},
+    {
+     RowBox[{"-", "0.26`"}]},
+    {
+     RowBox[{"-", "0.0957`"}]},
+    {
+     RowBox[{"-", "0.0957`"}]},
+    {
+     RowBox[{"-", "0.177`"}]},
+    {
+     RowBox[{"-", "0.437`"}]},
+    {
+     RowBox[{"-", "0.26`"}]},
+    {
+     RowBox[{"-", "0.437`"}]},
+    {
+     RowBox[{"-", "0.506`"}]},
+    {
+     RowBox[{"-", "0.506`"}]},
+    {
+     RowBox[{"-", "0.506`"}]},
+    {
+     RowBox[{"-", "0.13`"}]},
+    {
+     RowBox[{"-", "0.239`"}]},
+    {
+     RowBox[{"-", "0.0623`"}]},
+    {
+     RowBox[{"-", "0.0341`"}]},
+    {
+     RowBox[{"-", "0.26`"}]},
+    {
+     RowBox[{"-", "1.03`"}]},
+    {
+     RowBox[{"-", "0.000152`"}]},
+    {
+     RowBox[{"-", "0.000152`"}]},
+    {
+     RowBox[{"-", "0.000213`"}]},
+    {
+     RowBox[{"-", "0.000446`"}]},
+    {
+     RowBox[{"-", "0.000481`"}]},
+    {
+     RowBox[{"-", "0.00057`"}]},
+    {
+     RowBox[{"-", "0.00057`"}]},
+    {
+     RowBox[{"-", "0.000243`"}]},
+    {
+     RowBox[{"-", "0.000288`"}]},
+    {
+     RowBox[{"-", "0.000288`"}]},
+    {
+     RowBox[{"-", "0.0013`"}]},
+    {
+     RowBox[{"-", "0.000343`"}]},
+    {
+     RowBox[{"-", "0.00223`"}]},
+    {
+     RowBox[{"-", "0.00962`"}]},
+    {
+     RowBox[{"-", "0.0111`"}]},
+    {
+     RowBox[{"-", "0.000115`"}]},
+    {
+     RowBox[{"-", "0.000496`"}]},
+    {
+     RowBox[{"-", "0.000496`"}]},
+    {
+     RowBox[{"-", "0.000331`"}]},
+    {
+     RowBox[{"-", "0.000392`"}]},
+    {
+     RowBox[{"-", "0.000392`"}]},
+    {
+     RowBox[{"-", "0.000153`"}]},
+    {
+     RowBox[{"-", "0.00027`"}]},
+    {
+     RowBox[{"-", "0.00232`"}]},
+    {
+     RowBox[{"-", "0.00232`"}]},
+    {
+     RowBox[{"-", "0.0234`"}]},
+    {
+     RowBox[{"-", "0.0234`"}]},
+    {
+     RowBox[{"-", "0.0234`"}]},
+    {
+     RowBox[{"-", "0.0234`"}]},
+    {
+     RowBox[{"-", "0.0234`"}]},
+    {
+     RowBox[{"-", "0.0234`"}]},
+    {
+     RowBox[{"-", "0.0234`"}]},
+    {
+     RowBox[{"-", "0.0234`"}]},
+    {
+     RowBox[{"-", "0.00124`"}]},
+    {
+     RowBox[{"-", "0.00124`"}]},
+    {
+     RowBox[{"-", "0.0141`"}]},
+    {
+     RowBox[{"-", "0.00301`"}]},
+    {
+     RowBox[{"-", "0.00301`"}]},
+    {
+     RowBox[{"-", "0.000551`"}]},
+    {
+     RowBox[{"-", "0.000731`"}]},
+    {
+     RowBox[{"-", "0.00334`"}]},
+    {
+     RowBox[{"-", "0.00334`"}]},
+    {
+     RowBox[{"-", "0.000375`"}]},
+    {
+     RowBox[{"-", "0.000784`"}]},
+    {
+     RowBox[{"-", "0.000306`"}]},
+    {
+     RowBox[{"-", "0.000271`"}]},
+    {
+     RowBox[{"-", "0.000139`"}]},
+    {
+     RowBox[{"-", "0.00165`"}]},
+    {
+     RowBox[{"-", "0.00165`"}]},
+    {
+     RowBox[{"-", "0.0153`"}]},
+    {
+     RowBox[{"-", "0.00661`"}]},
+    {
+     RowBox[{"-", "0.00661`"}]},
+    {
+     RowBox[{"-", "0.0241`"}]},
+    {
+     RowBox[{"-", "0.0219`"}]},
+    {
+     RowBox[{"-", "0.0241`"}]},
+    {
+     RowBox[{"-", "0.0241`"}]},
+    {
+     RowBox[{"-", "0.00661`"}]},
+    {
+     RowBox[{"-", "0.00559`"}]},
+    {
+     RowBox[{"-", "0.59`"}]},
+    {
+     RowBox[{"-", "0.462`"}]},
+    {
+     RowBox[{"-", "0.0572`"}]},
+    {
+     RowBox[{"-", "0.0572`"}]},
+    {
+     RowBox[{"-", "0.241`"}]},
+    {
+     RowBox[{"-", "0.19`"}]},
+    {
+     RowBox[{"-", "0.209`"}]},
+    {
+     RowBox[{"-", "0.209`"}]},
+    {
+     RowBox[{"-", "0.0572`"}]},
+    {
+     RowBox[{"-", "0.551`"}]},
+    {
+     RowBox[{"-", "0.305`"}]},
+    {
+     RowBox[{"-", "0.00113`"}]},
+    {
+     RowBox[{"-", "0.00113`"}]},
+    {
+     RowBox[{"-", "0.00137`"}]},
+    {
+     RowBox[{"-", "0.00137`"}]},
+    {
+     RowBox[{"-", "0.00557`"}]},
+    {
+     RowBox[{"-", "0.00461`"}]},
+    {
+     RowBox[{"-", "0.00461`"}]},
+    {
+     RowBox[{"-", "0.00512`"}]},
+    {
+     RowBox[{"-", "0.00461`"}]},
+    {
+     RowBox[{"-", "0.00461`"}]},
+    {
+     RowBox[{"-", "0.00461`"}]},
+    {
+     RowBox[{"-", "0.00461`"}]},
+    {
+     RowBox[{"-", "0.00557`"}]},
+    {
+     RowBox[{"-", "0.00506`"}]},
+    {
+     RowBox[{"-", "0.00557`"}]},
+    {
+     RowBox[{"-", "0.00557`"}]},
+    {
+     RowBox[{"-", "0.00506`"}]},
+    {
+     RowBox[{"-", "0.00506`"}]},
+    {
+     RowBox[{"-", "0.00267`"}]},
+    {
+     RowBox[{"-", "0.00221`"}]},
+    {
+     RowBox[{"-", "0.00221`"}]},
+    {
+     RowBox[{"-", "0.00246`"}]},
+    {
+     RowBox[{"-", "0.00221`"}]},
+    {
+     RowBox[{"-", "0.00221`"}]},
+    {
+     RowBox[{"-", "0.00221`"}]},
+    {
+     RowBox[{"-", "0.00221`"}]},
+    {
+     RowBox[{"-", "0.00267`"}]},
+    {
+     RowBox[{"-", "0.00243`"}]},
+    {
+     RowBox[{"-", "0.00267`"}]},
+    {
+     RowBox[{"-", "0.00267`"}]},
+    {
+     RowBox[{"-", "0.00243`"}]},
+    {
+     RowBox[{"-", "0.00243`"}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7427715314145064`*^9, 
+  3.7427718038916283`*^9},ExpressionUUID->"1f347eec-f8f9-457e-b69c-\
+f57fc61745ca"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cc", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "0"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.742772655333538*^9, 
+  3.742772666532132*^9}},ExpressionUUID->"132d261b-5fa9-4433-a033-\
+4a382b550d83"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Intento", "[", 
+   RowBox[{"u_", ",", "v_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"i", "=", "1"}], ";", 
+     RowBox[{"j", "=", "1"}]}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"Length", "[", "u", "]"}]}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"While", "[", 
+     RowBox[{
+      RowBox[{"j", "\[LessEqual]", 
+       RowBox[{"Length", "[", "v", "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"cc", ",", 
+         RowBox[{
+          RowBox[{"u", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+           "+", 
+          RowBox[{
+          "v", "\[LeftDoubleBracket]", "j", "\[RightDoubleBracket]"}]}]}], 
+        "]"}], ";", 
+       RowBox[{"j", "++"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7427721546889644`*^9, 3.742772247479879*^9}, {
+  3.742772459829381*^9, 3.742772507338203*^9}, {3.742772560189969*^9, 
+  3.7427725609015913`*^9}, {3.7427726050063376`*^9, 3.742772605381115*^9}, {
+  3.7427726762565703`*^9, 3.7427727085101376`*^9}, {3.7427738928427553`*^9, 
+  3.742773953733921*^9}, {3.7427743400697584`*^9, 3.742774349088603*^9}, {
+  3.742774388117275*^9, 3.742774419181509*^9}, {3.74277460798549*^9, 
+  3.7427746376475325`*^9}, {3.742774714667461*^9, 3.742774800125575*^9}, {
+  3.7427750271646953`*^9, 3.742775077110117*^9}, {3.742775138501995*^9, 
+  3.7427751686597414`*^9}, {3.7427752430361967`*^9, 3.7427753724102*^9}, {
+  3.74277545891472*^9, 
+  3.7427754765106535`*^9}},ExpressionUUID->"fe99cd49-279e-4c6e-a278-\
+b72683b86771"],
+
+Cell[BoxData[
+ RowBox[{"Intento", "[", 
+  RowBox[{"bb", ",", "aa"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7427726150106077`*^9, 
+  3.742772625732473*^9}},ExpressionUUID->"48a94b61-5424-4a8a-bcb2-\
+2ea1c336612f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"cc", "//", "TableForm"}]], "Input",
+ CellChangeTimes->{{3.7427754830319304`*^9, 
+  3.7427754859962263`*^9}},ExpressionUUID->"65b27926-e06c-4bd5-991c-\
+952640119fcb"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{"-", "0.202771`"}]},
+    {
+     RowBox[{"-", "0.000616`"}]},
+    {
+     RowBox[{"-", "0.000616`"}]},
+    {
+     RowBox[{"-", "0.001041`"}]},
+    {
+     RowBox[{"-", "0.001631`"}]},
+    {
+     RowBox[{"-", "0.001051`"}]},
+    {
+     RowBox[{"-", "0.005051`"}]},
+    {
+     RowBox[{"-", "0.011371`"}]},
+    {
+     RowBox[{"-", "0.0013009999999999999`"}]},
+    {
+     RowBox[{"-", "0.0013009999999999999`"}]},
+    {
+     RowBox[{"-", "0.00012200000000000001`"}]},
+    {
+     RowBox[{"-", "0.00003599999999999998`"}]},
+    {
+     RowBox[{"-", "0.000289`"}]},
+    {
+     RowBox[{"-", "0.00008699999999999997`"}]},
+    {
+     RowBox[{"-", "0.00039899999999999994`"}]},
+    {
+     RowBox[{"-", "0.00039899999999999994`"}]},
+    {
+     RowBox[{"-", "0.001181`"}]},
+    {
+     RowBox[{"-", "0.001181`"}]},
+    {
+     RowBox[{"-", "0.0037010000000000003`"}]},
+    {
+     RowBox[{"-", "0.000736`"}]},
+    {
+     RowBox[{"-", "0.001481`"}]},
+    {
+     RowBox[{"-", "0.008781`"}]},
+    {
+     RowBox[{"-", "0.008781`"}]},
+    {
+     RowBox[{"-", "0.0007489999999999999`"}]},
+    {
+     RowBox[{"-", "0.001631`"}]},
+    {
+     RowBox[{"-", "0.001091`"}]},
+    {"8.000000000000005`*^-6"},
+    {
+     RowBox[{"-", "0.005271`"}]},
+    {
+     RowBox[{"-", "0.018571`"}]},
+    {
+     RowBox[{"-", "0.00006499999999999998`"}]},
+    {
+     RowBox[{"-", "0.0013009999999999999`"}]},
+    {
+     RowBox[{"-", "0.0013009999999999999`"}]},
+    {"0.00011`"},
+    {
+     RowBox[{"-", "0.00021199999999999998`"}]},
+    {
+     RowBox[{"-", "0.004961`"}]},
+    {
+     RowBox[{"-", "0.000375`"}]},
+    {
+     RowBox[{"-", "0.003131`"}]},
+    {
+     RowBox[{"-", "0.00017800000000000002`"}]},
+    {
+     RowBox[{"-", "0.008491`"}]},
+    {"0.000019`"},
+    {
+     RowBox[{"-", "0.002111`"}]},
+    {
+     RowBox[{"-", "0.0007189999999999999`"}]},
+    {
+     RowBox[{"-", "0.002471`"}]},
+    {
+     RowBox[{"-", "0.00003999999999999997`"}]},
+    {
+     RowBox[{"-", "0.00003999999999999997`"}]},
+    {
+     RowBox[{"-", "0.002161`"}]},
+    {
+     RowBox[{"-", "0.002161`"}]},
+    {"8.000000000000005`*^-6"},
+    {"8.000000000000005`*^-6"},
+    {
+     RowBox[{"-", "0.001441`"}]},
+    {
+     RowBox[{"-", "0.000791`"}]},
+    {
+     RowBox[{"-", "0.000455`"}]},
+    {
+     RowBox[{"-", "0.00012200000000000001`"}]},
+    {
+     RowBox[{"-", "0.00003599999999999998`"}]},
+    {
+     RowBox[{"-", "0.000289`"}]},
+    {
+     RowBox[{"-", "0.00008699999999999997`"}]},
+    {
+     RowBox[{"-", "0.00039899999999999994`"}]},
+    {
+     RowBox[{"-", "0.00039899999999999994`"}]},
+    {
+     RowBox[{"-", "0.001181`"}]},
+    {
+     RowBox[{"-", "0.001181`"}]},
+    {
+     RowBox[{"-", "0.000362`"}]},
+    {
+     RowBox[{"-", "0.0009009999999999999`"}]},
+    {
+     RowBox[{"-", "0.00045799999999999997`"}]},
+    {
+     RowBox[{"-", "0.00048399999999999995`"}]},
+    {
+     RowBox[{"-", "0.002271`"}]},
+    {
+     RowBox[{"-", "0.002271`"}]},
+    {
+     RowBox[{"-", "0.098971`"}]},
+    {
+     RowBox[{"-", "0.006391`"}]},
+    {
+     RowBox[{"-", "0.32277100000000003`"}]},
+    {
+     RowBox[{"-", "0.059871`"}]},
+    {
+     RowBox[{"-", "0.121771`"}]},
+    {
+     RowBox[{"-", "0.06927100000000001`"}]},
+    {
+     RowBox[{"-", "0.195771`"}]},
+    {
+     RowBox[{"-", "0.153771`"}]},
+    {
+     RowBox[{"-", "0.195771`"}]},
+    {
+     RowBox[{"-", "0.151771`"}]},
+    {
+     RowBox[{"-", "0.08957100000000001`"}]},
+    {
+     RowBox[{"-", "0.158771`"}]},
+    {
+     RowBox[{"-", "0.015971`"}]},
+    {
+     RowBox[{"-", "0.015971`"}]},
+    {
+     RowBox[{"-", "0.038071`"}]},
+    {
+     RowBox[{"-", "0.059871`"}]},
+    {
+     RowBox[{"-", "0.166771`"}]},
+    {
+     RowBox[{"-", "0.0005409999999999999`"}]},
+    {
+     RowBox[{"-", "0.0005409999999999999`"}]},
+    {"0.00011200000000000001`"},
+    {"0.00002200000000000002`"},
+    {"0.00002200000000000002`"},
+    {
+     RowBox[{"-", "0.00034099999999999994`"}]},
+    {
+     RowBox[{"-", "0.00034099999999999994`"}]},
+    {
+     RowBox[{"-", "0.003431`"}]},
+    {
+     RowBox[{"-", "0.016071`"}]},
+    {"0.000057`"},
+    {
+     RowBox[{"-", "0.00040299999999999993`"}]},
+    {
+     RowBox[{"-", "0.00003999999999999997`"}]},
+    {
+     RowBox[{"-", "0.006501`"}]},
+    {
+     RowBox[{"-", "0.0026709999999999998`"}]},
+    {
+     RowBox[{"-", "0.0026709999999999998`"}]},
+    {
+     RowBox[{"-", "0.009001`"}]},
+    {
+     RowBox[{"-", "0.009001`"}]},
+    {
+     RowBox[{"-", "0.009001`"}]},
+    {
+     RowBox[{"-", "0.0026709999999999998`"}]},
+    {"0.000127`"},
+    {
+     RowBox[{"-", "0.000193`"}]},
+    {
+     RowBox[{"-", "0.002111`"}]},
+    {
+     RowBox[{"-", "0.002111`"}]},
+    {
+     RowBox[{"-", "0.000861`"}]},
+    {
+     RowBox[{"-", "0.015771`"}]},
+    {
+     RowBox[{"-", "0.000024000000000000014`"}]},
+    {
+     RowBox[{"-", "0.00037199999999999993`"}]},
+    {
+     RowBox[{"-", "0.002191`"}]},
+    {
+     RowBox[{"-", "0.002191`"}]},
+    {
+     RowBox[{"-", "0.00011100000000000001`"}]},
+    {
+     RowBox[{"-", "0.001661`"}]},
+    {
+     RowBox[{"-", "0.001661`"}]},
+    {
+     RowBox[{"-", "0.00043599999999999997`"}]},
+    {
+     RowBox[{"-", "0.002451`"}]},
+    {
+     RowBox[{"-", "0.002451`"}]},
+    {
+     RowBox[{"-", "0.00018299999999999998`"}]},
+    {
+     RowBox[{"-", "0.001431`"}]},
+    {
+     RowBox[{"-", "0.001431`"}]},
+    {
+     RowBox[{"-", "0.000477`"}]},
+    {
+     RowBox[{"-", "0.002621`"}]},
+    {
+     RowBox[{"-", "0.002621`"}]},
+    {
+     RowBox[{"-", "0.00020999999999999998`"}]},
+    {
+     RowBox[{"-", "0.001541`"}]},
+    {
+     RowBox[{"-", "0.001541`"}]},
+    {
+     RowBox[{"-", "0.095471`"}]},
+    {
+     RowBox[{"-", "0.25977100000000003`"}]},
+    {
+     RowBox[{"-", "0.25977100000000003`"}]},
+    {
+     RowBox[{"-", "0.25977100000000003`"}]},
+    {
+     RowBox[{"-", "0.25977100000000003`"}]},
+    {
+     RowBox[{"-", "0.095471`"}]},
+    {
+     RowBox[{"-", "0.095471`"}]},
+    {
+     RowBox[{"-", "0.17677099999999998`"}]},
+    {
+     RowBox[{"-", "0.436771`"}]},
+    {
+     RowBox[{"-", "0.25977100000000003`"}]},
+    {
+     RowBox[{"-", "0.436771`"}]},
+    {
+     RowBox[{"-", "0.505771`"}]},
+    {
+     RowBox[{"-", "0.505771`"}]},
+    {
+     RowBox[{"-", "0.505771`"}]},
+    {
+     RowBox[{"-", "0.129771`"}]},
+    {
+     RowBox[{"-", "0.23877099999999998`"}]},
+    {
+     RowBox[{"-", "0.062071`"}]},
+    {
+     RowBox[{"-", "0.033871`"}]},
+    {
+     RowBox[{"-", "0.25977100000000003`"}]},
+    {
+     RowBox[{"-", "1.029771`"}]},
+    {"0.000077`"},
+    {"0.000077`"},
+    {"0.00001600000000000001`"},
+    {
+     RowBox[{"-", "0.000217`"}]},
+    {
+     RowBox[{"-", "0.00025199999999999995`"}]},
+    {
+     RowBox[{"-", "0.00034099999999999994`"}]},
+    {
+     RowBox[{"-", "0.00034099999999999994`"}]},
+    {
+     RowBox[{"-", "0.000013999999999999988`"}]},
+    {
+     RowBox[{"-", "0.000059`"}]},
+    {
+     RowBox[{"-", "0.000059`"}]},
+    {
+     RowBox[{"-", "0.001071`"}]},
+    {
+     RowBox[{"-", "0.00011399999999999998`"}]},
+    {
+     RowBox[{"-", "0.002001`"}]},
+    {
+     RowBox[{"-", "0.009391`"}]},
+    {
+     RowBox[{"-", "0.010871`"}]},
+    {"0.000114`"},
+    {
+     RowBox[{"-", "0.000267`"}]},
+    {
+     RowBox[{"-", "0.000267`"}]},
+    {
+     RowBox[{"-", "0.00010200000000000001`"}]},
+    {
+     RowBox[{"-", "0.00016299999999999998`"}]},
+    {
+     RowBox[{"-", "0.00016299999999999998`"}]},
+    {"0.000076`"},
+    {
+     RowBox[{"-", "0.000040999999999999994`"}]},
+    {
+     RowBox[{"-", "0.002091`"}]},
+    {
+     RowBox[{"-", "0.002091`"}]},
+    {
+     RowBox[{"-", "0.023171`"}]},
+    {
+     RowBox[{"-", "0.023171`"}]},
+    {
+     RowBox[{"-", "0.023171`"}]},
+    {
+     RowBox[{"-", "0.023171`"}]},
+    {
+     RowBox[{"-", "0.023171`"}]},
+    {
+     RowBox[{"-", "0.023171`"}]},
+    {
+     RowBox[{"-", "0.023171`"}]},
+    {
+     RowBox[{"-", "0.023171`"}]},
+    {
+     RowBox[{"-", "0.001011`"}]},
+    {
+     RowBox[{"-", "0.001011`"}]},
+    {
+     RowBox[{"-", "0.013871`"}]},
+    {
+     RowBox[{"-", "0.002781`"}]},
+    {
+     RowBox[{"-", "0.002781`"}]},
+    {
+     RowBox[{"-", "0.0003219999999999999`"}]},
+    {
+     RowBox[{"-", "0.000502`"}]},
+    {
+     RowBox[{"-", "0.003111`"}]},
+    {
+     RowBox[{"-", "0.003111`"}]},
+    {
+     RowBox[{"-", "0.000146`"}]},
+    {
+     RowBox[{"-", "0.0005549999999999999`"}]},
+    {
+     RowBox[{"-", "0.000077`"}]},
+    {
+     RowBox[{"-", "0.000041999999999999964`"}]},
+    {"0.00009000000000000002`"},
+    {
+     RowBox[{"-", "0.001421`"}]},
+    {
+     RowBox[{"-", "0.001421`"}]},
+    {
+     RowBox[{"-", "0.015071`"}]},
+    {
+     RowBox[{"-", "0.006381`"}]},
+    {
+     RowBox[{"-", "0.006381`"}]},
+    {
+     RowBox[{"-", "0.023871`"}]},
+    {
+     RowBox[{"-", "0.021671`"}]},
+    {
+     RowBox[{"-", "0.023871`"}]},
+    {
+     RowBox[{"-", "0.023871`"}]},
+    {
+     RowBox[{"-", "0.006381`"}]},
+    {
+     RowBox[{"-", "0.005361`"}]},
+    {
+     RowBox[{"-", "0.5897709999999999`"}]},
+    {
+     RowBox[{"-", "0.46177100000000004`"}]},
+    {
+     RowBox[{"-", "0.056971`"}]},
+    {
+     RowBox[{"-", "0.056971`"}]},
+    {
+     RowBox[{"-", "0.24077099999999999`"}]},
+    {
+     RowBox[{"-", "0.189771`"}]},
+    {
+     RowBox[{"-", "0.20877099999999998`"}]},
+    {
+     RowBox[{"-", "0.20877099999999998`"}]},
+    {
+     RowBox[{"-", "0.056971`"}]},
+    {
+     RowBox[{"-", "0.550771`"}]},
+    {
+     RowBox[{"-", "0.304771`"}]},
+    {
+     RowBox[{"-", "0.0009009999999999999`"}]},
+    {
+     RowBox[{"-", "0.0009009999999999999`"}]},
+    {
+     RowBox[{"-", "0.0011409999999999999`"}]},
+    {
+     RowBox[{"-", "0.0011409999999999999`"}]},
+    {
+     RowBox[{"-", "0.005341`"}]},
+    {
+     RowBox[{"-", "0.004381`"}]},
+    {
+     RowBox[{"-", "0.004381`"}]},
+    {
+     RowBox[{"-", "0.004891`"}]},
+    {
+     RowBox[{"-", "0.004381`"}]},
+    {
+     RowBox[{"-", "0.004381`"}]},
+    {
+     RowBox[{"-", "0.004381`"}]},
+    {
+     RowBox[{"-", "0.004381`"}]},
+    {
+     RowBox[{"-", "0.005341`"}]},
+    {
+     RowBox[{"-", "0.004831`"}]},
+    {
+     RowBox[{"-", "0.005341`"}]},
+    {
+     RowBox[{"-", "0.005341`"}]},
+    {
+     RowBox[{"-", "0.004831`"}]},
+    {
+     RowBox[{"-", "0.004831`"}]},
+    {
+     RowBox[{"-", "0.002441`"}]},
+    {
+     RowBox[{"-", "0.001981`"}]},
+    {
+     RowBox[{"-", "0.001981`"}]},
+    {
+     RowBox[{"-", "0.002231`"}]},
+    {
+     RowBox[{"-", "0.001981`"}]},
+    {
+     RowBox[{"-", "0.001981`"}]},
+    {
+     RowBox[{"-", "0.001981`"}]},
+    {
+     RowBox[{"-", "0.001981`"}]},
+    {
+     RowBox[{"-", "0.002441`"}]},
+    {
+     RowBox[{"-", "0.002201`"}]},
+    {
+     RowBox[{"-", "0.002441`"}]},
+    {
+     RowBox[{"-", "0.002441`"}]},
+    {
+     RowBox[{"-", "0.002201`"}]},
+    {
+     RowBox[{"-", "0.002201`"}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.7427755027176595`*^9, 
+  3.7427755194847703`*^9}},ExpressionUUID->"a186321a-bae5-4934-9a56-\
+80d89afc4eca"]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+CellContext->Notebook,
+Magnification:>1.1 Inherited,
+FrontEndVersion->"11.2 para Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 323, 7, 92, "Input",ExpressionUUID->"7b390084-6820-40d0-b886-ac20dfc8d0e1"],
+Cell[884, 29, 486, 11, 51, "Input",ExpressionUUID->"ab2b36ff-a098-40aa-9296-f88a0f6ba1bf"],
+Cell[1373, 42, 390, 9, 51, "Input",ExpressionUUID->"1b85e07c-3b06-49f8-9435-77eb26790938"],
+Cell[1766, 53, 1035, 26, 174, "Input",ExpressionUUID->"fb55545a-82db-4fec-9803-478d9b8ce415"],
+Cell[2804, 81, 1015, 23, 189, "Code",ExpressionUUID->"791552a9-09e0-43e5-91dd-09a688350056"],
+Cell[3822, 106, 1065, 26, 137, "Input",ExpressionUUID->"09c166c2-ba74-469d-afd0-b6040f8ed5b5"],
+Cell[CellGroupData[{
+Cell[4912, 136, 318, 6, 49, "Input",ExpressionUUID->"46fce633-cc6b-474d-97fd-1ab31d809a69"],
+Cell[5233, 144, 746, 13, 35, "Output",ExpressionUUID->"d55b0bcc-26a2-42f0-bbe6-276b785135b8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6016, 162, 366, 7, 49, "Input",ExpressionUUID->"4599c306-dc87-4654-bcb9-a6ad315eb974"],
+Cell[6385, 171, 816, 13, 35, "Output",ExpressionUUID->"2fd584fe-bbea-403e-8318-eb779cd92af0"]
+}, Open  ]],
+Cell[7216, 187, 1762, 36, 134, "Input",ExpressionUUID->"002891a9-36af-4423-9918-113867a124ed"],
+Cell[CellGroupData[{
+Cell[9003, 227, 513, 9, 30, "Input",ExpressionUUID->"f1d1136a-1584-4c4f-82e2-bcf67543e34a"],
+Cell[9519, 238, 360, 6, 24, "Print",ExpressionUUID->"9d9215f3-f21f-406f-ae2a-4509b8dcd816"]
+}, Open  ]],
+Cell[9894, 247, 1564, 32, 134, "Input",ExpressionUUID->"b73b33ac-af15-46a5-ac34-c362aecc6cef"],
+Cell[CellGroupData[{
+Cell[11483, 283, 295, 5, 30, "Input",ExpressionUUID->"721187be-7c95-4405-804b-3b0aa20f659f"],
+Cell[CellGroupData[{
+Cell[11803, 292, 454, 8, 24, "Print",ExpressionUUID->"bd0c35bd-5800-44a5-8cf0-258e0428a370"],
+Cell[12260, 302, 448, 8, 24, "Print",ExpressionUUID->"71d20495-aeb0-43c7-b612-7e6155068f34"],
+Cell[12711, 312, 457, 8, 24, "Print",ExpressionUUID->"fbbe9a77-20bd-4753-ad19-269dcf5ca906"],
+Cell[13171, 322, 447, 7, 24, "Print",ExpressionUUID->"6e1920f8-0306-4cca-95d0-51effaf4f2dd"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13667, 335, 1877, 28, 135, "Input",ExpressionUUID->"ca099732-4d9b-4584-83bb-aaba35c3dd44"],
+Cell[15547, 365, 973, 15, 78, "Output",ExpressionUUID->"863d3553-ee6c-4f40-afa9-cc377d2f75f2"],
+Cell[16523, 382, 1094, 17, 69, "Output",ExpressionUUID->"99f4c4f5-6aec-4508-ae21-26d353cb0b48"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17654, 404, 193, 4, 51, "Input",ExpressionUUID->"c1c3d198-6b8d-464a-a05d-e31c0e77a164"],
+Cell[17850, 410, 82222, 1671, 15839, "Output",ExpressionUUID->"0adc0ead-304d-4516-b4ad-18fd5b32003a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[100109, 2086, 284, 6, 51, "Input",ExpressionUUID->"567be02e-2e69-482c-b042-7131cea3aa29"],
+Cell[100396, 2094, 278, 5, 36, "Output",ExpressionUUID->"eac97e17-2b76-4fad-9e70-f327be6c16ea"]
+}, Open  ]],
+Cell[100689, 2102, 273, 8, 51, "Input",ExpressionUUID->"e879f6ac-1edb-4fa3-9392-5a7695fadd88"],
+Cell[100965, 2112, 1434, 31, 113, "Code",ExpressionUUID->"ca9aa088-7b70-4578-bfa4-581462c06855"],
+Cell[CellGroupData[{
+Cell[102424, 2147, 325, 7, 73, "Input",ExpressionUUID->"22af6a48-5a19-4460-ae35-47181c5d89a6"],
+Cell[102752, 2156, 33249, 1339, 22109, "Output",ExpressionUUID->"7d3e3e2b-f8df-4424-8607-135b4f9097e3"],
+Cell[136004, 3497, 246, 6, 43, "Print",ExpressionUUID->"212430cd-8ac7-4491-831e-b4a06a5b093f"]
+}, Open  ]],
+Cell[136265, 3506, 275, 8, 51, "Input",ExpressionUUID->"c1d2e4d0-1283-4ab0-97ca-fcccc7d20149"],
+Cell[136543, 3516, 1307, 29, 113, "Code",ExpressionUUID->"813ece71-0021-40dc-a130-f6c1254f0864"],
+Cell[137853, 3547, 293, 5, 32, "Input",ExpressionUUID->"f1b6b9f1-05b7-42ae-8dec-bed9422127b7"],
+Cell[CellGroupData[{
+Cell[138171, 3556, 187, 4, 51, "Input",ExpressionUUID->"b88b97cc-c703-4172-96b1-0ff3eb680d9c"],
+Cell[138361, 3562, 10252, 513, 4743, "Output",ExpressionUUID->"1f347eec-f8f9-457e-b69c-f57fc61745ca"]
+}, Open  ]],
+Cell[148628, 4078, 273, 8, 51, "Input",ExpressionUUID->"132d261b-5fa9-4433-a033-4a382b550d83"],
+Cell[148904, 4088, 1689, 38, 178, "Input",ExpressionUUID->"fe99cd49-279e-4c6e-a278-b72683b86771"],
+Cell[150596, 4128, 213, 5, 32, "Input",ExpressionUUID->"48a94b61-5424-4a8a-bcb2-2ea1c336612f"],
+Cell[CellGroupData[{
+Cell[150834, 4137, 189, 4, 51, "Input",ExpressionUUID->"65b27926-e06c-4bd5-991c-952640119fcb"],
+Cell[151026, 4143, 11268, 497, 4752, "Output",ExpressionUUID->"a186321a-bae5-4934-9a56-80d89afc4eca"]
+}, Open  ]]
+}
+]
+*)
+
